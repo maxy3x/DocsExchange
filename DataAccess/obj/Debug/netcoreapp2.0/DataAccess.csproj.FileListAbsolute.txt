@@ -24,3 +24,16 @@ D:\INTITA\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyInf
 D:\INTITA\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyInfo.cs
 D:\INTITA\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.dll
 D:\INTITA\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.pdb
+D:\INTITA\GitHub\DocsExchange\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.deps.json
+D:\INTITA\GitHub\DocsExchange\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.runtimeconfig.json
+D:\INTITA\GitHub\DocsExchange\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.runtimeconfig.dev.json
+D:\INTITA\GitHub\DocsExchange\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.dll
+D:\INTITA\GitHub\DocsExchange\DataAccess\bin\Debug\netcoreapp2.0\DataAccess.pdb
+D:\INTITA\GitHub\DocsExchange\DataAccess\bin\Debug\netcoreapp2.0\Domain.Models.dll
+D:\INTITA\GitHub\DocsExchange\DataAccess\bin\Debug\netcoreapp2.0\Domain.Models.pdb
+D:\INTITA\GitHub\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.csprojResolveAssemblyReference.cache
+D:\INTITA\GitHub\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.csproj.CoreCompileInputs.cache
+D:\INTITA\GitHub\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyInfoInputs.cache
+D:\INTITA\GitHub\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.AssemblyInfo.cs
+D:\INTITA\GitHub\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.dll
+D:\INTITA\GitHub\DocsExchange\DataAccess\obj\Debug\netcoreapp2.0\DataAccess.pdb

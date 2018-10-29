@@ -1,10 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using AutoMapper;
 using BusinessLogic;
 using DataAccess.Context;
 using DocsExchange.ViewModels;
 using Domain.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace DocsExchange
 {
@@ -16,7 +18,8 @@ namespace DocsExchange
                 .ForMember(x => x.Departament, c => c.ResolveUsing<DepartamentResolverReverse>())
                 .ForMember(x => x.Partner, c => c.ResolveUsing<PartnerResolverReverse>())
                 .ForMember(x => x.Responsible, c => c.ResolveUsing<ResponsibleResolverReverse>())
-                .ForMember(x => x.Company, c => c.ResolveUsing<CompanyResolverReverse>());
+                .ForMember(x => x.Company, c => c.ResolveUsing<CompanyResolverReverse>())
+                .ForMember(x => x.Files, c => c.ResolveUsing<FileResolverReverse>());
             CreateMap<Contracts, ContractsView>()
                 .ForMember(x => x.DepartamentName, c => c.ResolveUsing<DepartamentResolver>())
                 .ForMember(x => x.PartnerName, c => c.ResolveUsing<PartnerResolver>())
@@ -129,5 +132,21 @@ namespace DocsExchange
             var company = _companyBusinessLogic.GetByStr(source.CompanyName).FirstOrDefault();
             return company.Id;
         }
+    }
+    public class FileResolverReverse : IValueResolver<ContractsView, Contracts, byte[]>
+    {
+        public byte[] Resolve(ContractsView source, Contracts destination, byte[] file, ResolutionContext context)
+        {
+            byte[] imageData = null;
+            if (source.Files != null)
+            {
+                using (var binaryReader = new BinaryReader(source.Files.OpenReadStream()))
+                {
+                    imageData = binaryReader.ReadBytes((int)source.Files.Length);
+                }
+            }
+            return imageData;
+        }
+        
     }
 }

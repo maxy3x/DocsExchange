@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using BusinessLogic;
 using DataAccess;
@@ -12,7 +11,6 @@ using DocsExchange.Models;
 using DocsExchange.ViewModels;
 using Domain.Models;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -20,18 +18,14 @@ namespace DocsExchange.Controllers
 {
     public class ContractsController : Controller
     {
-        private readonly DocsDbContext _context;
         private readonly IMapper _mapper;
-        private readonly IHostingEnvironment _appEnvironment;
         private readonly IDepartamentBusinessLogic _departamentBusinessLogic;
         private readonly IContractsBusinessLogic _contractsBusinessLogic;
         private readonly IEmployeeBusinessLogic _employeeBusinessLogic;
         private readonly ICompanyBusinessLogic _companyBusinessLogic;
 
-        public ContractsController(IContractsRepository repository, IHostingEnvironment appEnvironment, DocsDbContext context, IDepartamentBusinessLogic departamentBusinessLogic, IContractsBusinessLogic contractsBusinessLogic, IEmployeeBusinessLogic employeeBusinessLogic, ICompanyBusinessLogic companyBusinessLogic, IMapper mapper)
+        public ContractsController(IContractsRepository repository, IDepartamentBusinessLogic departamentBusinessLogic, IContractsBusinessLogic contractsBusinessLogic, IEmployeeBusinessLogic employeeBusinessLogic, ICompanyBusinessLogic companyBusinessLogic, IMapper mapper)
         {
-            _appEnvironment = appEnvironment;
-            _context = context;
             _departamentBusinessLogic = departamentBusinessLogic;
             _contractsBusinessLogic = contractsBusinessLogic;
             _employeeBusinessLogic = employeeBusinessLogic;
@@ -185,17 +179,17 @@ namespace DocsExchange.Controllers
             try
             {
                 var c = _mapper.Map<Contracts>(contract);
-                if (contract.Files != null)
-                {
-                    byte[] imageData = null;
-                    // считываем переданный файл в массив байтов
-                    using (var binaryReader = new BinaryReader(contract.Files.OpenReadStream()))
-                    {
-                        imageData = binaryReader.ReadBytes((int)contract.Files.Length);
-                    }
-                    // установка массива байтов
-                    c.Files = imageData;
-                }
+                //if (contract.Files != null)
+                //{
+                //    byte[] imageData = null;
+                //    // считываем переданный файл в массив байтов
+                //    using (var binaryReader = new BinaryReader(contract.Files.OpenReadStream()))
+                //    {
+                //        imageData = binaryReader.ReadBytes((int)contract.Files.Length);
+                //    }
+                //    // установка массива байтов
+                //    c.Files = imageData;
+                //}
                 _contractsBusinessLogic.Add(c);
                 return RedirectToAction(nameof(Index));
             }
