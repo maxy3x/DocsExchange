@@ -80,6 +80,10 @@
                 <td class="col-md-5">@Html.DisplayFor(m => m.IsDeleted)</td>
             </tr>
             <tr>
+                <td class="col-md-1">@Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-5">@Html.DisplayFor(model => model.Files.Name, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr>
                 <td class="col-md-1"></td>
                 <td class="col-md-5"><input type="submit" value="Save" class="btn btn-default" /></td>
             </tr>

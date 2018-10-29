@@ -27,6 +27,7 @@ namespace DataAccess
                 Attachments = new Attachments[]{
                     new Attachments(){Name = "file"}
                 },
+                Files = item.Files,
                 Responsible = _context.Employee.FirstOrDefault(c => c.Id == item.Responsible).Id,
                 Company = _context.Company.FirstOrDefault(c => c.Id == item.Company).Id
             };

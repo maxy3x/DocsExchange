@@ -674,11 +674,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\INTITA\\GitHub\\cSharp\\DocsExchange\\Domain.Models\\Domain.Models.csproj",
+      "projectUniqueName": "D:\\INTITA\\DocsExchange\\Domain.Models\\Domain.Models.csproj",
       "projectName": "Domain.Models",
-      "projectPath": "D:\\INTITA\\GitHub\\cSharp\\DocsExchange\\Domain.Models\\Domain.Models.csproj",
+      "projectPath": "D:\\INTITA\\DocsExchange\\Domain.Models\\Domain.Models.csproj",
       "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-      "outputPath": "D:\\INTITA\\GitHub\\cSharp\\DocsExchange\\Domain.Models\\obj\\",
+      "outputPath": "D:\\INTITA\\DocsExchange\\Domain.Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",

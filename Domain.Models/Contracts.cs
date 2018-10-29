@@ -19,6 +19,7 @@ namespace Domain.Models
         [Required]
         public int Departament { get; set; }
         public IEnumerable<Attachments>  Attachments { get; set; }
+        public byte[] Files { get; set; }
         public int Company { get; set; }
     }
 }

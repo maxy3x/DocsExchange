@@ -15,7 +15,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DocsExchange.Controllers
 {
@@ -186,6 +185,17 @@ namespace DocsExchange.Controllers
             try
             {
                 var c = _mapper.Map<Contracts>(contract);
+                if (contract.Files != null)
+                {
+                    byte[] imageData = null;
+                    // считываем переданный файл в массив байтов
+                    using (var binaryReader = new BinaryReader(contract.Files.OpenReadStream()))
+                    {
+                        imageData = binaryReader.ReadBytes((int)contract.Files.Length);
+                    }
+                    // установка массива байтов
+                    c.Files = imageData;
+                }
                 _contractsBusinessLogic.Add(c);
                 return RedirectToAction(nameof(Index));
             }
@@ -194,7 +204,7 @@ namespace DocsExchange.Controllers
                 return View();
             }
         }
-
+        
         public ActionResult Edit(int id)
         {
             var contract = _mapper.Map<ContractsView>(_contractsBusinessLogic.Get(id));
@@ -204,8 +214,25 @@ namespace DocsExchange.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, ContractsView contract)
         {
-            _contractsBusinessLogic.Update(_mapper.Map<Contracts>(contract));
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                var c = _mapper.Map<Contracts>(contract);
+                if (contract.Files != null)
+                {
+                    byte[] fileData = null;
+                    using (var binaryReader = new BinaryReader(contract.Files.OpenReadStream()))
+                    {
+                        fileData = binaryReader.ReadBytes((int)contract.Files.Length);
+                    }
+                    c.Files = fileData;
+                }
+                _contractsBusinessLogic.Update(c);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
         }
         public ActionResult Details(int id)
         {
@@ -243,25 +270,6 @@ namespace DocsExchange.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddFile(IFormFile uploadedFile)
-        {
-            if (uploadedFile != null)
-            {
-                // путь к папке Files
-                string path = "/Files/" + uploadedFile.FileName;
-                // сохраняем файл в папку Files в каталоге wwwroot
-                using (var fileStream = new FileStream(_appEnvironment.WebRootPath + path, FileMode.Create))
-                {
-                    await uploadedFile.CopyToAsync(fileStream);
-                }
-                Attachments file = new Attachments { Name = uploadedFile.FileName, Path = path };
-                _context.Attachments.Add(file);
-                _context.SaveChanges();
-            }
-
-            return RedirectToAction("Index");
-        }
+        
     }
 }

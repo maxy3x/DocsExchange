@@ -76,12 +76,17 @@
                 <td class="col-md-5">@Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcCompany" } })</td>
             </tr>
             <tr>
+                <td class="col-md-1">@Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label" })</td>
+                @*<td class="col-md-5">@Html.EditorFor(model => model.Files, new { htmlAttributes = new { @class = "form-control", type = "file" } })</td>*@
+                <td class="col-md-5"><input name="File" type="file" class="form-control" /></td>
+            </tr>
+            <tr>
                 <td class="col-md-1">@Html.LabelFor(model => model.IsDeleted, htmlAttributes: new { @class = "control-label" })</td>
                 <td class="col-md-5">@Html.CheckBoxFor(m => m.IsDeleted)</td>
             </tr>
             <tr>
                 <td class="col-md-1"></td>
-                <td class="col-md-5"><input type="submit" value="Save" class="btn btn-default" /></td>
+                <td class="col-md-5"><input type="submit" value="Зберегти" class="btn btn-default" /></td>
             </tr>
         </table>
 

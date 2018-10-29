@@ -11,3 +11,14 @@ D:\INTITA\GitHub\cSharp\DocsExchange\Domain.Models\obj\Debug\netcoreapp2.0\Domai
 D:\INTITA\GitHub\cSharp\DocsExchange\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.pdb
 D:\INTITA\GitHub\cSharp\DocsExchange\Domain.Models\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Http.dll
 D:\INTITA\GitHub\cSharp\DocsExchange\Domain.Models\bin\Debug\netcoreapp2.0\Microsoft.AspNetCore.Http.xml
+D:\INTITA\DocsExchange\Domain.Models\bin\Debug\netcoreapp2.0\Domain.Models.deps.json
+D:\INTITA\DocsExchange\Domain.Models\bin\Debug\netcoreapp2.0\Domain.Models.dll
+D:\INTITA\DocsExchange\Domain.Models\bin\Debug\netcoreapp2.0\Domain.Models.pdb
+D:\INTITA\DocsExchange\Domain.Models\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.dll
+D:\INTITA\DocsExchange\Domain.Models\bin\Debug\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.xml
+D:\INTITA\DocsExchange\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.csprojResolveAssemblyReference.cache
+D:\INTITA\DocsExchange\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.csproj.CoreCompileInputs.cache
+D:\INTITA\DocsExchange\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.AssemblyInfoInputs.cache
+D:\INTITA\DocsExchange\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.AssemblyInfo.cs
+D:\INTITA\DocsExchange\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.dll
+D:\INTITA\DocsExchange\Domain.Models\obj\Debug\netcoreapp2.0\Domain.Models.pdb

@@ -31,6 +31,8 @@
     <Compile Include="Migrations\20181025191331_corrected error.Designer.cs" />
     <Compile Include="Migrations\20181026113923_Add number contract.cs" />
     <Compile Include="Migrations\20181026113923_Add number contract.Designer.cs" />
+    <Compile Include="Migrations\20181029120853_corrected contracts add byte[].cs" />
+    <Compile Include="Migrations\20181029120853_corrected contracts add byte[].Designer.cs" />
     <Compile Include="Migrations\DocsDbContextModelSnapshot.cs" />
   </ItemGroup>
 
