@@ -1,0 +1,70 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Migrations\20180912192432_Init.cs" />
+    <Compile Include="Migrations\20180912192432_Init.Designer.cs" />
+    <Compile Include="Migrations\20180915193735_edite contracts.cs" />
+    <Compile Include="Migrations\20180915193735_edite contracts.Designer.cs" />
+    <Compile Include="Migrations\20180916162536_edited models.cs" />
+    <Compile Include="Migrations\20180916162536_edited models.Designer.cs" />
+    <Compile Include="Migrations\20180920080555_add company.cs" />
+    <Compile Include="Migrations\20180920080555_add company.Designer.cs" />
+    <Compile Include="Migrations\20180920135234_Entities.cs" />
+    <Compile Include="Migrations\20180920135234_Entities.Designer.cs" />
+    <Compile Include="Migrations\20180920143712_Entities phone.cs" />
+    <Compile Include="Migrations\20180920143712_Entities phone.Designer.cs" />
+    <Compile Include="Migrations\20180925175932_corrected contract and eployee.cs" />
+    <Compile Include="Migrations\20180925175932_corrected contract and eployee.Designer.cs" />
+    <Compile Include="Migrations\20180926194532_corrected contracts.cs" />
+    <Compile Include="Migrations\20180926194532_corrected contracts.Designer.cs" />
+    <Compile Include="Migrations\20181025191331_corrected error.cs" />
+    <Compile Include="Migrations\20181025191331_corrected error.Designer.cs" />
+    <Compile Include="Migrations\20181026113923_Add number contract.cs" />
+    <Compile Include="Migrations\20181026113923_Add number contract.Designer.cs" />
+    <Compile Include="Migrations\DocsDbContextModelSnapshot.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.1.2" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="2.9.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="2.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Models\Domain.Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore">
+      <HintPath>C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.aspnetcore.identity.entityframeworkcore\2.0.1\lib\netstandard2.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore">
+      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.entityframeworkcore\2.0.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational">
+      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.entityframeworkcore.relational\2.0.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.SqlServer">
+      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.entityframeworkcore.sqlserver\2.0.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.SqlServer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

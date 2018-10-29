@@ -1,0 +1,90 @@
+﻿@model DocsExchange.ViewModels.ContractsView
+
+@{
+    ViewData["Title"] = "Create new dep";
+}
+
+@section Scripts {
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#AutoCcDep').autocomplete({
+                source: '/Search/AutocompleteSearchDepartaments',
+                minLength: 3,
+                delay: 400
+            });
+            $('#AutoCcCompany').autocomplete({
+                source: '/Search/AutocompleteSearchCompanies',
+                minLength: 3,
+                delay: 400
+            });
+            $('#AutoCcEmployee').autocomplete({
+                source: '/Search/AutocompleteSearchEmployee',
+                minLength: 3,
+                delay: 400
+            });
+            $('#AutoCcPartner').autocomplete({
+                source: '/Search/AutocompleteSearchPartner',
+                minLength: 3,
+                delay: 400
+            });
+        });
+    </script>
+}
+
+<h2>Договори</h2>
+
+<h4>Створення нового...</h4>
+<hr />
+<div class="row">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="col-md-6">
+                <tr>
+                    <td class="col-md-1">@Html.LabelFor(model => model.DateStart, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-5">@Html.EditorFor(model => model.DateStart, new { htmlAttributes = new { @class = "form-control" } })</td>
+                </tr>
+                <tr>
+                    <td class="col-md-1">@Html.LabelFor(model => model.DateEnd, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-5">@Html.EditorFor(model => model.DateEnd, new { htmlAttributes = new { @class = "form-control" } })</td>
+                </tr>
+                <tr>
+                    <td class="col-md-1">@Html.LabelFor(model => model.DocNumber, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-5">@Html.EditorFor(model => model.DocNumber, new { htmlAttributes = new { @class = "form-control" } })</td>
+                </tr>
+                <tr>
+                    <td class="col-md-1">@Html.LabelFor(model => model.ResponsibleName, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-5">@Html.EditorFor(model => model.ResponsibleName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcEmployee" } })</td>
+                </tr>
+                <tr>
+                    <td class="col-md-1">@Html.LabelFor(model => model.PartnerName, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-5">@Html.EditorFor(model => model.PartnerName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcPartner" } })</td>
+                </tr>
+                <tr>
+                    <td class="col-md-1">@Html.LabelFor(model => model.DepartamentName, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-5">@Html.EditorFor(model => model.DepartamentName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcDep" } })</td>
+                </tr>
+                <tr>
+                    <td class="col-md-1">@Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-5">@Html.EditorFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcCompany" } })</td>
+                </tr>
+                <tr>
+                    <td class="col-md-1">@Html.LabelFor(model => model.IsDeleted, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-5">@Html.CheckBoxFor(m => m.IsDeleted)</td>
+                </tr>
+                <tr>
+                    <td class="col-md-1"></td>
+                    <td class="col-md-5"><input type="submit" value="Save" class="btn btn-default" /></td>
+                </tr>
+            </table>
+        }
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

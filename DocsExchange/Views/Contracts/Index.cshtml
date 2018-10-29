@@ -1,0 +1,131 @@
+﻿@using DocsExchange.ViewModels
+@model FilterContracts
+
+@{
+    ViewData["Title"] = "View";
+}
+
+@section Scripts {
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#AutoCcDep').autocomplete({
+                source: '/Search/AutocompleteSearchDepartaments',
+                minLength: 3,
+                delay: 400
+            });
+            $('#AutoCcCompany').autocomplete({
+                source: '/Search/AutocompleteSearchCompanies',
+                minLength: 3,
+                delay: 400
+            });
+            $('#AutoCcEmployee').autocomplete({
+                source: '/Search/AutocompleteSearchEmployee',
+                minLength: 3,
+                delay: 400
+            });
+            $('#AutoCcPartner').autocomplete({
+                source: '/Search/AutocompleteSearchPartner',
+                minLength: 3,
+                delay: 400
+            });
+        });
+    </script>
+}
+
+<h2>Договори</h2>
+
+
+@using (Html.BeginForm("Filter", "Contracts", FormMethod.Post))
+{
+    <fieldset>
+        <form asp-action="Filter">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="table-condensed" id="filtersContracts">
+                <thead>
+                    <tr>
+                        <th>Номер договору</th>
+                        <th>Дата початку</th>
+                        <th>Дата закінчення</th>
+                        <th>Відділ</th>
+                        <th>Відповідальний</th>
+                        <th>Партнер</th>
+                        <th>Фірма</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Html.EditorFor(x => x.Number, new { htmlAttributes = new { @class = "EditorRadius" } })</td>
+                        <td>@Html.EditorFor(x => x.DateStart, new { htmlAttributes = new { @class = "EditorRadius" } })</td>
+                        <td>@Html.EditorFor(x => x.DateEnd, new { htmlAttributes = new { @class = "EditorRadius" } })</td>
+                        <td>@Html.EditorFor(x => x.Departament, new { htmlAttributes = new { @id = "AutoCcDep", @class = "EditorRadius" }})</td>
+                        <td>@Html.EditorFor(x => x.Responsible, new { htmlAttributes = new { @id = "AutoCcEmployee", @class = "EditorRadius" } })</td>
+                        <td>@Html.EditorFor(x => x.Partner, new { htmlAttributes = new { @id = "AutoCcPartner", @class = "EditorRadius" } })</td>
+                        <td>@Html.EditorFor(x => x.Comany, new { htmlAttributes = new { @id = "AutoCcCompany", @class = "EditorRadius" } })</td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <div class="form-group">
+                <input type="submit" value="Шукати" class="btn btn-info" /> | <a asp-action="Index">Показати всі..</a>
+            </div>
+        </form>
+    </fieldset>
+}
+    <p>
+        <a asp-action="Create"><img src="~/images/add.png"> Створити новий</a>
+    </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Дата початку</th>
+            <th>Дата закінчення</th>
+            <th>№ договору</th>
+            <th>Партнер</th>
+            <th>Фірма</th>
+            <th>Відділ</th>
+            <th>Відповідальний</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ContractsView item in ViewBag.Data)
+        {
+        <tr>
+            <td>
+                @item.DateStart.ToShortDateString()
+            </td>
+            <td>
+                @item.DateEnd.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PartnerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartamentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResponsibleName)
+            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.IsDeleted)
+        </td>*@
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

@@ -1,0 +1,24 @@
+﻿@using System.Collections.Generic
+@using System.Linq
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Http.Authentication
+@model LoginViewModel
+@inject SignInManager<IdentityUser> SignInManager
+@{
+    ViewData["Title"] = "Home Page";
+}
+<link rel="stylesheet" href="~/css/main.css" />
+<body>
+    <div class="main-logo-div">
+        <img src="~/images/logo2.jpg">
+    </div>
+</body>
+@*@if (SignInManager.IsSignedIn(User))
+        {
+            <h1> loginned...</h1>
+        }
+        else
+        {
+            <h1> not loginned...</h1>
+        }*@
+
