@@ -24,7 +24,9 @@ namespace DocsExchange
                 .ForMember(x => x.DepartamentName, c => c.ResolveUsing<DepartamentResolver>())
                 .ForMember(x => x.PartnerName, c => c.ResolveUsing<PartnerResolver>())
                 .ForMember(x => x.ResponsibleName, c => c.ResolveUsing<ResponsibleResolver>())
-                .ForMember(x => x.CompanyName, c => c.ResolveUsing<CompanyResolver>());
+                .ForMember(x => x.CompanyName, c => c.ResolveUsing<CompanyResolver>())
+                .ForMember(x => x.FilesByte, c => c.ResolveUsing<FileResolver>())
+                .ForMember(x => x.Files, c => c.ResolveUsing<FileResolverIFormFiles>());
         }
     }
     public class DepartamentResolver : IValueResolver<Contracts, ContractsView, string>
@@ -137,16 +139,32 @@ namespace DocsExchange
     {
         public byte[] Resolve(ContractsView source, Contracts destination, byte[] file, ResolutionContext context)
         {
-            byte[] imageData = null;
+            byte[] fileData = null;
             if (source.Files != null)
             {
                 using (var binaryReader = new BinaryReader(source.Files.OpenReadStream()))
                 {
-                    imageData = binaryReader.ReadBytes((int)source.Files.Length);
+                    fileData = binaryReader.ReadBytes((int)source.Files.Length);
                 }
             }
-            return imageData;
+            return fileData;
         }
         
+    }
+    public class FileResolver : IValueResolver<Contracts, ContractsView, byte[]>
+    {
+        public byte[] Resolve(Contracts source, ContractsView destination, byte[] file, ResolutionContext context)
+        {
+            return source.Files;
+        }
+
+    }
+    public class FileResolverIFormFiles : IValueResolver<Contracts, ContractsView, IFormFile>
+    {
+        public IFormFile Resolve(Contracts source, ContractsView destination, IFormFile file, ResolutionContext context)
+        {
+            return null;
+        }
+
     }
 }

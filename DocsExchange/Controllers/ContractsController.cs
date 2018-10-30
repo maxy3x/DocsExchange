@@ -178,19 +178,7 @@ namespace DocsExchange.Controllers
         {
             try
             {
-                var c = _mapper.Map<Contracts>(contract);
-                //if (contract.Files != null)
-                //{
-                //    byte[] imageData = null;
-                //    // считываем переданный файл в массив байтов
-                //    using (var binaryReader = new BinaryReader(contract.Files.OpenReadStream()))
-                //    {
-                //        imageData = binaryReader.ReadBytes((int)contract.Files.Length);
-                //    }
-                //    // установка массива байтов
-                //    c.Files = imageData;
-                //}
-                _contractsBusinessLogic.Add(c);
+                _contractsBusinessLogic.Add(_mapper.Map<Contracts>(contract));
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception e)
@@ -210,17 +198,17 @@ namespace DocsExchange.Controllers
         {
             try
             {
-                var c = _mapper.Map<Contracts>(contract);
-                if (contract.Files != null)
-                {
-                    byte[] fileData = null;
-                    using (var binaryReader = new BinaryReader(contract.Files.OpenReadStream()))
-                    {
-                        fileData = binaryReader.ReadBytes((int)contract.Files.Length);
-                    }
-                    c.Files = fileData;
-                }
-                _contractsBusinessLogic.Update(c);
+                //var c = _mapper.Map<Contracts>(contract);
+                //if (contract.Files != null)
+                //{
+                //    byte[] fileData = null;
+                //    using (var binaryReader = new BinaryReader(contract.Files.OpenReadStream()))
+                //    {
+                //        fileData = binaryReader.ReadBytes((int)contract.Files.Length);
+                //    }
+                //    c.Files = fileData;
+                //}
+                _contractsBusinessLogic.Update(_mapper.Map<Contracts>(contract));
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception e)

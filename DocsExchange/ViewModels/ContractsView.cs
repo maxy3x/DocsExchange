@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using Domain.Models;
 using Microsoft.AspNetCore.Http;
 
@@ -31,6 +30,7 @@ namespace DocsExchange.ViewModels
         public IEnumerable<Attachments> Attachments { get; set; }
         [DisplayName("Файли")]
         public IFormFile Files { get; set; }
+        public byte[] FilesByte { get; set; }
         [DisplayName("Фірма")]
         public string CompanyName { get; set; }
         public int Company { get; set; }
