@@ -18,7 +18,7 @@ namespace Domain.Models
         public int Responsible { get; set; }
         [Required]
         public int Departament { get; set; }
-        public IEnumerable<Attachments>  Attachments { get; set; }
+        public string FileName { get; set; }
         public byte[] Files { get; set; }
         public int Company { get; set; }
     }

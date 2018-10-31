@@ -4,20 +4,37 @@ using DataAccess.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(DocsDbContext))]
-    partial class DocsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181031092001_correctedFilesContracts")]
+    partial class correctedFilesContracts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.1.3-rtm-32065")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Domain.Models.Attachments", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Path");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Attachments");
+                });
 
             modelBuilder.Entity("Domain.Models.Company", b =>
                 {
@@ -41,6 +58,8 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AttachmentsId");
+
                     b.Property<int>("Company");
 
                     b.Property<DateTime>("DateEnd");
@@ -51,8 +70,6 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("DocNumber");
 
-                    b.Property<string>("FileName");
-
                     b.Property<byte[]>("Files");
 
                     b.Property<bool>("IsDeleted");
@@ -62,6 +79,8 @@ namespace DataAccess.Migrations
                     b.Property<int>("Responsible");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AttachmentsId");
 
                     b.ToTable("Contracts");
                 });
@@ -287,6 +306,13 @@ namespace DataAccess.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Domain.Models.Contracts", b =>
+                {
+                    b.HasOne("Domain.Models.Attachments", "Attachments")
+                        .WithMany()
+                        .HasForeignKey("AttachmentsId");
                 });
 
             modelBuilder.Entity("Domain.Models.Employee", b =>

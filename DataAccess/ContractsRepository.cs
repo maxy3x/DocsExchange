@@ -24,9 +24,7 @@ namespace DataAccess
                 DocNumber = item.DocNumber,
                 Departament = _context.Departament.FirstOrDefault(c => c.Id == item.Departament).Id,
                 Partner = _context.Company.FirstOrDefault(c => c.Id == item.Partner).Id,
-                Attachments = new Attachments[]{
-                    new Attachments(){Name = "file"}
-                },
+                FileName = item.FileName,
                 Files = item.Files,
                 Responsible = _context.Employee.FirstOrDefault(c => c.Id == item.Responsible).Id,
                 Company = _context.Company.FirstOrDefault(c => c.Id == item.Company).Id

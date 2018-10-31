@@ -25,7 +25,6 @@ namespace DocsExchange
                 .ForMember(x => x.PartnerName, c => c.ResolveUsing<PartnerResolver>())
                 .ForMember(x => x.ResponsibleName, c => c.ResolveUsing<ResponsibleResolver>())
                 .ForMember(x => x.CompanyName, c => c.ResolveUsing<CompanyResolver>())
-                .ForMember(x => x.FilesByte, c => c.ResolveUsing<FileResolver>())
                 .ForMember(x => x.Files, c => c.ResolveUsing<FileResolverIFormFiles>());
         }
     }
@@ -149,7 +148,6 @@ namespace DocsExchange
             }
             return fileData;
         }
-        
     }
     public class FileResolver : IValueResolver<Contracts, ContractsView, byte[]>
     {
@@ -167,4 +165,5 @@ namespace DocsExchange
         }
 
     }
+    
 }

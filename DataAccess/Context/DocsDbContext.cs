@@ -11,7 +11,6 @@ namespace DataAccess.Context
         public DbSet<Departament> Departament { get; set; }
         public DbSet<Docs> Docs { get; set; }
         public DbSet<Employee> Employee { get; set; }
-        public DbSet<Attachments> Attachments { get; set; }
         public DbSet<Company> Company { get; set; }
         public DocsDbContext(DbContextOptions<DocsDbContext> options)
             : base(options)

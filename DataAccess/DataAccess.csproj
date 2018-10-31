@@ -33,6 +33,10 @@
     <Compile Include="Migrations\20181026113923_Add number contract.Designer.cs" />
     <Compile Include="Migrations\20181029120853_corrected contracts add byte[].cs" />
     <Compile Include="Migrations\20181029120853_corrected contracts add byte[].Designer.cs" />
+    <Compile Include="Migrations\20181031092001_correctedFilesContracts.cs" />
+    <Compile Include="Migrations\20181031092001_correctedFilesContracts.Designer.cs" />
+    <Compile Include="Migrations\20181031102508_delete Attachmants class.cs" />
+    <Compile Include="Migrations\20181031102508_delete Attachmants class.Designer.cs" />
     <Compile Include="Migrations\DocsDbContextModelSnapshot.cs" />
   </ItemGroup>
 

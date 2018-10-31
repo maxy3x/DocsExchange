@@ -26,11 +26,10 @@ namespace DocsExchange.ViewModels
         [DisplayName("Відділ")]
         public string DepartamentName { get; set; }
         public int Departament { get; set; }
-        [DisplayName("дод.файли")]
-        public IEnumerable<Attachments> Attachments { get; set; }
-        [DisplayName("Файли")]
+        [DisplayName("Назва файлу")]
+        public string FileName { get; set; }
+        [DisplayName("Файл")]
         public IFormFile Files { get; set; }
-        public byte[] FilesByte { get; set; }
         [DisplayName("Фірма")]
         public string CompanyName { get; set; }
         public int Company { get; set; }

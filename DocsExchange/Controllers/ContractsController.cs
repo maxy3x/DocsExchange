@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using AutoMapper;
 using BusinessLogic;
 using DataAccess;
@@ -146,8 +147,6 @@ namespace DocsExchange.Controllers
                 return true;
             return false;
         }
-
-
         public IActionResult Index()
         {
             if(HttpContext.User.Identity.IsAuthenticated == true)
@@ -178,6 +177,7 @@ namespace DocsExchange.Controllers
         {
             try
             {
+                if (contract.Files != null){contract.FileName = contract.Files.FileName;}
                 _contractsBusinessLogic.Add(_mapper.Map<Contracts>(contract));
                 return RedirectToAction(nameof(Index));
             }
@@ -186,7 +186,6 @@ namespace DocsExchange.Controllers
                 return View();
             }
         }
-        
         public ActionResult Edit(int id)
         {
             var contract = _mapper.Map<ContractsView>(_contractsBusinessLogic.Get(id));
@@ -198,16 +197,7 @@ namespace DocsExchange.Controllers
         {
             try
             {
-                //var c = _mapper.Map<Contracts>(contract);
-                //if (contract.Files != null)
-                //{
-                //    byte[] fileData = null;
-                //    using (var binaryReader = new BinaryReader(contract.Files.OpenReadStream()))
-                //    {
-                //        fileData = binaryReader.ReadBytes((int)contract.Files.Length);
-                //    }
-                //    c.Files = fileData;
-                //}
+                if (contract.Files != null){contract.FileName = contract.Files.FileName;}
                 _contractsBusinessLogic.Update(_mapper.Map<Contracts>(contract));
                 return RedirectToAction(nameof(Index));
             }
@@ -248,10 +238,54 @@ namespace DocsExchange.Controllers
                 return View();
             }
         }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Download(string filename)
+        {
+            //if (filename == null)
+            //    return Content("filename not present");
+
+            //var path = Path.Combine(
+            //    Directory.GetCurrentDirectory(),
+            //    "wwwroot", filename);
+
+            //var memory = new MemoryStream();
+            //using (var stream = new FileStream(path, FileMode.Open))
+            //{
+            //    await stream.CopyToAsync(memory);
+            //}
+            //memory.Position = 0;
+            //return File(memory, GetContentType(path), Path.GetFileName(path));
+            return null;
+        }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
-        
+
+        private string GetContentType(string path)
+        {
+            var types = GetMimeTypes();
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            return types[ext];
+        }
+
+        private Dictionary<string, string> GetMimeTypes()
+        {
+            return new Dictionary<string, string>
+            {
+                {".txt", "text/plain"},
+                {".pdf", "application/pdf"},
+                {".doc", "application/vnd.ms-word"},
+                {".docx", "application/vnd.ms-word"},
+                {".xls", "application/vnd.ms-excel"},
+                {".xlsx", "application/vnd.openxmlformatsofficedocument.spreadsheetml.sheet"},
+                {".png", "image/png"},
+                {".jpg", "image/jpeg"},
+                {".jpeg", "image/jpeg"},
+                {".gif", "image/gif"},
+                {".csv", "text/csv"}
+            };
+        }
     }
 }
