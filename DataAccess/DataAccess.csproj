@@ -37,6 +37,8 @@
     <Compile Include="Migrations\20181031092001_correctedFilesContracts.Designer.cs" />
     <Compile Include="Migrations\20181031102508_delete Attachmants class.cs" />
     <Compile Include="Migrations\20181031102508_delete Attachmants class.Designer.cs" />
+    <Compile Include="Migrations\20181101171606_corrected.cs" />
+    <Compile Include="Migrations\20181101171606_corrected.Designer.cs" />
     <Compile Include="Migrations\DocsDbContextModelSnapshot.cs" />
   </ItemGroup>
 

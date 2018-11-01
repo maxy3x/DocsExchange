@@ -73,7 +73,6 @@ namespace DocsExchange.Controllers
             ViewBag.Data = models.OrderBy(x => x.DateStart).ToList();
             return View(nameof(Index));
         }
-
         private bool FilterByNumber(Contracts @event, string number)
         {
             if (String.IsNullOrEmpty(number))
@@ -178,7 +177,9 @@ namespace DocsExchange.Controllers
         {
             try
             {
-                if (contract.Files != null){contract.FileName = contract.Files.FileName;}
+                if (contract.Files != null)
+                    if (contract.Files.ContentType == "application/pdf")
+                        { contract.FileName = contract.Files.FileName;}
                 _contractsBusinessLogic.Add(_mapper.Map<Contracts>(contract));
                 return RedirectToAction(nameof(Index));
             }
@@ -198,7 +199,9 @@ namespace DocsExchange.Controllers
         {
             try
             {
-                if (contract.Files != null){contract.FileName = contract.Files.FileName;}
+                if (contract.Files != null)
+                    if (contract.Files.ContentType == "application/pdf")
+                        {contract.FileName = contract.Files.FileName;}
                 _contractsBusinessLogic.Update(_mapper.Map<Contracts>(contract));
                 return RedirectToAction(nameof(Index));
             }
@@ -239,7 +242,7 @@ namespace DocsExchange.Controllers
                 return View();
             }
         }
-        public async Task<IActionResult> ShowPDF(int id)
+        public async Task<IActionResult> ShowPdf(int id)
         {
             var model = _contractsBusinessLogic.Get(id);
             return File(model.Files, "application/pdf");

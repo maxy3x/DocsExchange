@@ -14075,11 +14075,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\INTITA\\DocsExchange\\DocsExchange\\DocsExchange.csproj",
+      "projectUniqueName": "D:\\INTITA\\GitHub\\DocsExchange\\DocsExchange\\DocsExchange.csproj",
       "projectName": "DocsExchange",
-      "projectPath": "D:\\INTITA\\DocsExchange\\DocsExchange\\DocsExchange.csproj",
+      "projectPath": "D:\\INTITA\\GitHub\\DocsExchange\\DocsExchange\\DocsExchange.csproj",
       "packagesPath": "C:\\Users\\Max\\.nuget\\packages\\",
-      "outputPath": "D:\\INTITA\\DocsExchange\\DocsExchange\\obj\\",
+      "outputPath": "D:\\INTITA\\GitHub\\DocsExchange\\DocsExchange\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
@@ -14100,11 +14100,11 @@
       "frameworks": {
         "netcoreapp2.0": {
           "projectReferences": {
-            "D:\\INTITA\\DocsExchange\\DataAccess\\DataAccess.csproj": {
-              "projectPath": "D:\\INTITA\\DocsExchange\\DataAccess\\DataAccess.csproj"
+            "D:\\INTITA\\GitHub\\DocsExchange\\DataAccess\\DataAccess.csproj": {
+              "projectPath": "D:\\INTITA\\GitHub\\DocsExchange\\DataAccess\\DataAccess.csproj"
             },
-            "D:\\INTITA\\DocsExchange\\BusinessLogic\\BusinessLogic.csproj": {
-              "projectPath": "D:\\INTITA\\DocsExchange\\BusinessLogic\\BusinessLogic.csproj"
+            "D:\\INTITA\\GitHub\\DocsExchange\\BusinessLogic\\BusinessLogic.csproj": {
+              "projectPath": "D:\\INTITA\\GitHub\\DocsExchange\\BusinessLogic\\BusinessLogic.csproj"
             }
           }
         }
