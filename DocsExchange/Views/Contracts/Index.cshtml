@@ -70,7 +70,7 @@
 
             </table>
             <div class="form-group">
-                <input type="submit" value="Шукати" class="btn btn-info" /> | <a asp-action="Index">Показати всі..</a>
+                <button type="submit" value="Шукати" style="border: none; background-color: Transparent;"><img src="~/images/search_icon.png" title="Шукати" width="25" height="25" /></button> | <a asp-action="Index">Показати всі..</a>
             </div>
         </form>
     </fieldset>
@@ -115,13 +115,10 @@
             <td>
                 @Html.DisplayFor(modelItem => item.ResponsibleName)
             </td>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.IsDeleted)
-        </td>*@
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id"><img src="~/images/edit_icon.png" width="20" height="20" alt="Редагувати" title="Редагувати" /></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><img src="~/images/preview_icon.png" width="20" height="20" alt="Перегляд" title="Перегляд" /></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><img src="~/images/delete_icon.png" width="20" height="20" alt="Видалити" title="Видалити" /></a>
             </td>
         </tr>
         }

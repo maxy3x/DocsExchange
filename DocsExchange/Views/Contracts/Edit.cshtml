@@ -80,15 +80,13 @@
                 <td class="col-md-1">@Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label" })</td>
                 <td class="col-md-5"><input name="Files" type="file" class="form-control" multiple /></td>
             </tr>
-            @*<tr>
-            <td class="col-md-1">@Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label" })</td>
-            <td class="col-md-1">
-                            @{
-                    var base64 = Convert.ToBase64String(Model.FilesByte);
-                    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-                }<img src="@imgSrc" width="30", height="30"/>
-                        </td>
-        </tr>*@
+            @if (@Model.FileName != null)
+            {
+                <tr>
+                    <td class="col-md-1">@Html.LabelFor(model => model.FileName, htmlAttributes: new {@class = "control-label"})</td>
+                    <td class="col-md-5"><a asp-action="ShowPDF" asp-route-id="@Model.Id">@Model.FileName</a></td>
+                </tr>
+            }
             <tr>
                 <td class="col-md-1">@Html.LabelFor(model => model.IsDeleted, htmlAttributes: new { @class = "control-label" })</td>
                 <td class="col-md-5">@Html.CheckBoxFor(m => m.IsDeleted)</td>
@@ -103,26 +101,8 @@
 
     }
 
-    @*<form method="post" enctype="multipart/form-data" asp-controller="Contracts" asp-action="Edit">
-            <div class="form-group">
-                <div class="col-md-10">
-                    <p>Upload one or more files using this form:</p>
-                    <input type="file" name="Files" multiple />
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input type="submit" value="Upload" />
-                </div>
-            </div>
-        </form>*@
-
 </div>
 <input type="hidden" asp-for="Id" />
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">До списку...</a>
 </div>
-
-@*@section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }*@

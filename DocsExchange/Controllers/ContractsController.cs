@@ -14,6 +14,7 @@ using Domain.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.NodeServices;
 
 namespace DocsExchange.Controllers
 {
@@ -238,25 +239,10 @@ namespace DocsExchange.Controllers
                 return View();
             }
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        public async Task<IActionResult> Download(string filename)
+        public async Task<IActionResult> ShowPDF(int id)
         {
-            //if (filename == null)
-            //    return Content("filename not present");
-
-            //var path = Path.Combine(
-            //    Directory.GetCurrentDirectory(),
-            //    "wwwroot", filename);
-
-            //var memory = new MemoryStream();
-            //using (var stream = new FileStream(path, FileMode.Open))
-            //{
-            //    await stream.CopyToAsync(memory);
-            //}
-            //memory.Position = 0;
-            //return File(memory, GetContentType(path), Path.GetFileName(path));
-            return null;
+            var model = _contractsBusinessLogic.Get(id);
+            return File(model.Files, "application/pdf");
         }
         public IActionResult Error()
         {

@@ -26,9 +26,9 @@ namespace DocsExchange.ViewModels
         [DisplayName("Відділ")]
         public string DepartamentName { get; set; }
         public int Departament { get; set; }
-        [DisplayName("Назва файлу")]
-        public string FileName { get; set; }
         [DisplayName("Файл")]
+        public string FileName { get; set; }
+        [DisplayName("Виберіть файл")]
         public IFormFile Files { get; set; }
         [DisplayName("Фірма")]
         public string CompanyName { get; set; }
