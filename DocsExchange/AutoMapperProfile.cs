@@ -26,6 +26,10 @@ namespace DocsExchange
                 .ForMember(x => x.ResponsibleName, c => c.ResolveUsing<ResponsibleResolver>())
                 .ForMember(x => x.CompanyName, c => c.ResolveUsing<CompanyResolver>())
                 .ForMember(x => x.Files, c => c.ResolveUsing<FileResolverIFormFiles>());
+            CreateMap<Company, CompanyView>()
+                .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>());
+            CreateMap<CompanyView, Company>();
+
         }
     }
     public class DepartamentResolver : IValueResolver<Contracts, ContractsView, string>
@@ -165,5 +169,12 @@ namespace DocsExchange
         }
 
     }
-    
+    public class MessageResolver : IValueResolver<Company, CompanyView, String>
+    {
+        public string Resolve(Company source, CompanyView destination, string message, ResolutionContext context)
+        {
+            var messageNew = "";
+            return messageNew;
+        }
+    }
 }

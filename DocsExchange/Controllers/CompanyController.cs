@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
 using BusinessLogic;
 using DocsExchange.Models;
 using DocsExchange.Models.Filters;
+using DocsExchange.ViewModels;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,18 +16,20 @@ namespace DocsExchange.Controllers
     {
         private readonly ICompanyBusinessLogic _companyBusinessLogic;
         private readonly IContractsBusinessLogic _contractsBusinessLogic;
+        private readonly IMapper _mapper;
 
-        public CompanyController(ICompanyBusinessLogic companyBusinessLogic, IContractsBusinessLogic contractsBusinessLogic)
+        public CompanyController(ICompanyBusinessLogic companyBusinessLogic, IContractsBusinessLogic contractsBusinessLogic, IMapper mapper)
         {
             _companyBusinessLogic = companyBusinessLogic;
             _contractsBusinessLogic = contractsBusinessLogic;
+            _mapper = mapper;
         }
 
         public IActionResult Index()
         {
             if (HttpContext.User.Identity.IsAuthenticated == true)
             {
-                ViewBag.Data = _companyBusinessLogic.GetActive().ToList();
+                ViewBag.Data = _companyBusinessLogic.GetActive().Select(_mapper.Map<CompanyView>);
                 return View();
             }
             else
@@ -56,15 +59,15 @@ namespace DocsExchange.Controllers
         public ActionResult Edit(int id)
         {
             var company = _companyBusinessLogic.Get(id);
-            return View(company);
+            return View(_mapper.Map<CompanyView>(company));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Company company)
+        public ActionResult Edit(int id, CompanyView company)
         {
             try
             {
-                _companyBusinessLogic.Update(company);
+                _companyBusinessLogic.Update(_mapper.Map<Company>(company));
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception e)
@@ -76,7 +79,7 @@ namespace DocsExchange.Controllers
         public ActionResult Delete(int id)
         {
             var company = _companyBusinessLogic.Get(id);
-            return View(company);
+            return View(_mapper.Map<CompanyView>(company));
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -84,24 +87,26 @@ namespace DocsExchange.Controllers
         {
             try
             {
-                if ((_contractsBusinessLogic.GetByPartner(_companyBusinessLogic.Get(id)) == null)
-                    && (_contractsBusinessLogic.GetByCompany(_companyBusinessLogic.Get(id)) == null))
+                if ((_contractsBusinessLogic.GetByPartner(_companyBusinessLogic.Get(id)).Any()) ||
+                    (_contractsBusinessLogic.GetByCompany(_companyBusinessLogic.Get(id)).Any()))
                 {
-                    _companyBusinessLogic.Delete(id);
-                    return RedirectToAction(nameof(Index));
+                    var companyView = _mapper.Map<CompanyView>(_companyBusinessLogic.Get(id));
+                    companyView.Message = "Компанія використовується!";
+                    return View(companyView);
                 }
-                return View(_companyBusinessLogic.Get(id));
+                _companyBusinessLogic.Delete(id);
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View(_companyBusinessLogic.Get(id));
+                return View(_mapper.Map<CompanyView>(_companyBusinessLogic.Get(id)));
             }
         }
 
         public ActionResult Details(int id)
         {
             var company = _companyBusinessLogic.Get(id);
-            return View(company);
+            return View(_mapper.Map<CompanyView>(company));
         }
         public IActionResult Error()
         {
@@ -119,8 +124,13 @@ namespace DocsExchange.Controllers
                 .Where(@company =>
                     FilterByName(@company, companyFilter))
                 .ToList();
-            
-            ViewBag.Data = companies.OrderBy(x => x.Name).ToList();
+            List<CompanyView> models = new List<CompanyView>();
+            foreach (var item in companies)
+            {
+                models.Add(_mapper.Map<CompanyView>(item));
+            }
+
+            ViewBag.Data = models.OrderBy(x => x.Name).ToList();
             return View(nameof(Index));
         }
         private bool FilterByName(Company @event, string companyFilter)

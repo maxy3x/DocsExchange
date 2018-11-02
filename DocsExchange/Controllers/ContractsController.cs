@@ -7,15 +7,12 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BusinessLogic;
 using DataAccess;
-using DataAccess.Context;
 using DocsExchange.Models;
 using DocsExchange.Models.Filters;
 using DocsExchange.ViewModels;
 using Domain.Models;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.NodeServices;
 
 namespace DocsExchange.Controllers
 {

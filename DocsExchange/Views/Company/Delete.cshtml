@@ -1,6 +1,6 @@
-﻿@model Domain.Models.Company
+﻿@model DocsExchange.ViewModels.CompanyView
 @{
-    ViewData["Title"] = String.Concat("Компанія №: ", @Model.Name);
+    ViewData["Title"] = String.Concat("Компанія: ", @Model.Name);
 }
 
 <h3>Перегляд договору</h3>
@@ -20,6 +20,13 @@
                 <td class="col-md-2"><hr /></td>
                 <td class="col-md-4"><hr /></td>
             </tr>
+            @if (!String.IsNullOrEmpty(@Model.Message))
+            {
+                <tr>
+                    <td class="col-md-2"></td>
+                    <td class="col-md-4" style="color: red">@Html.DisplayFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })</td>
+                </tr>
+            }
             <tr>
                 <td class="col-md-2"></td>
                 <td class="col-md-4">
