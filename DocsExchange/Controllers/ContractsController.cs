@@ -9,6 +9,7 @@ using BusinessLogic;
 using DataAccess;
 using DataAccess.Context;
 using DocsExchange.Models;
+using DocsExchange.Models.Filters;
 using DocsExchange.ViewModels;
 using Domain.Models;
 using Microsoft.AspNetCore.Hosting;
@@ -217,22 +218,14 @@ namespace DocsExchange.Controllers
             var contract = _mapper.Map<ContractsView>(_contractsBusinessLogic.Get(id));
             return View(contract);
         }
-        public ActionResult Delete(Contracts contracts)
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                var contract = _contractsBusinessLogic.Get(contracts.Id);
-                return View(contract);
-            }
-            catch (Exception e)
-            {
-                return View(nameof(Index));
-            }
-            
+            var contract = _mapper.Map<ContractsView>(_contractsBusinessLogic.Get(id));
+            return View(contract);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, Contracts contracts)
+        public ActionResult Delete(int id, ContractsView contracts)
         {
             try
             {

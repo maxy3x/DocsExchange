@@ -1,40 +1,77 @@
-﻿@model IEnumerable<Domain.Models.Company>
+﻿@using DocsExchange.Models.Filters
+@using Domain.Models
+@model DocsExchange.Models.Filters.FilterCompanies
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Довідник компаній";
 }
 
-<h2>Фірми</h2>
+@section Scripts {
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#AutoCcCompany').autocomplete({
+                source: '/Search/AutocompleteSearchCompanies',
+                minLength: 3,
+                delay: 400
+            });
+        });
+    </script>
+}
+
+<h2>Довідник компаній</h2>
+
+@using (Html.BeginForm("Filter", "Company", FormMethod.Post))
+{
+    <fieldset>
+        <form asp-action="Filter">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="table-condensed" id="filtersContracts">
+                <thead>
+                    <tr>
+                        <th>Назва</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Html.EditorFor(x => x.Name, new { htmlAttributes = new { @id = "AutoCcCompany", @class = "EditorRadius" } })</td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <div class="form-group">
+                <button type="submit" value="Шукати" style="border: none; background-color: Transparent;"><img src="~/images/search_icon.png" title="Шукати" width="25" height="25" /></button> | <a asp-action="Index">Показати всі..</a>
+            </div>
+        </form>
+    </fieldset>
+}
 
 <p>
-    <a asp-action="Create">Створити нову фірму</a>
+    <a asp-action="Create"><img src="~/images/add.png"> Створити новий</a>
 </p>
-<table class="table">
+<table class="table col-lg-4">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.IsDeleted)
-            </th>*@
-            <th></th>
+            <th class="col-lg-3">Назва</th>
+            <th class="col-lg-1">Дії</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.IsDeleted)
-            </td>*@
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+    @foreach (Company item in ViewBag.Data)
+        {
+            <tr>
+                <td  class="col-lg-3">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td  class="col-lg-1">
+                    <a asp-action="Edit" asp-route-id="@item.Id"><img src="~/images/edit_icon.png" width="20" height="20" alt="Редагувати" title="Редагувати" /></a> |
+                    <a asp-action="Details" asp-route-id="@item.Id"><img src="~/images/preview_icon.png" width="20" height="20" alt="Перегляд" title="Перегляд" /></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"><img src="~/images/delete_icon.png" width="20" height="20" alt="Видалити" title="Видалити" /></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

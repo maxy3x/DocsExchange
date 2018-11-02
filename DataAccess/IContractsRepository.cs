@@ -17,5 +17,6 @@ namespace DataAccess
         IEnumerable<Contracts> GetByEmployee(Employee employee);
         IEnumerable<Contracts> GetByDepartament(Departament departament);
         IEnumerable<Contracts> GetByPartner(Company partner);
+        IEnumerable<Contracts> GetByCompany(Company company);
     }
 }

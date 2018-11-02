@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DocsExchange
+namespace DocsExchange.Models.Filters
 {
     public class FilterContracts
     {

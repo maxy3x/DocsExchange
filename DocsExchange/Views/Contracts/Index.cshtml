@@ -1,8 +1,9 @@
-﻿@using DocsExchange.ViewModels
-@model FilterContracts
+﻿@using DocsExchange.Models.Filters
+@using DocsExchange.ViewModels
+@model DocsExchange.Models.Filters.FilterContracts
 
 @{
-    ViewData["Title"] = "View";
+    ViewData["Title"] = "Договори";
 }
 
 @section Scripts {
@@ -78,44 +79,45 @@
     <p>
         <a asp-action="Create"><img src="~/images/add.png"> Створити новий</a>
     </p>
-<table class="table">
+<table class="table col-lg-8">
     <thead>
         <tr>
-            <th>Дата початку</th>
-            <th>Дата закінчення</th>
-            <th>№ договору</th>
-            <th>Партнер</th>
-            <th>Фірма</th>
-            <th>Відділ</th>
-            <th>Відповідальний</th>
+            <th class="col-lg-1">Дата початку</th>
+            <th class="col-lg-1">Дата закінчення</th>
+            <th class="col-lg-1">№ договору</th>
+            <th class="col-lg-1">Партнер</th>
+            <th class="col-lg-1">Фірма</th>
+            <th class="col-lg-1">Відділ</th>
+            <th class="col-lg-1">Відповідальний</th>
+            <th class="col-lg-1">Дії</th>
         </tr>
     </thead>
     <tbody>
         @foreach (ContractsView item in ViewBag.Data)
         {
         <tr>
-            <td>
+            <td class="col-lg-1">
                 @item.DateStart.ToShortDateString()
             </td>
-            <td>
+            <td class="col-lg-1">
                 @item.DateEnd.ToShortDateString()
             </td>
-            <td>
+            <td class="col-lg-1">
                 @Html.DisplayFor(modelItem => item.DocNumber)
             </td>
-            <td>
+            <td class="col-lg-1">
                 @Html.DisplayFor(modelItem => item.PartnerName)
             </td>
-            <td>
+            <td class="col-lg-1">
                 @Html.DisplayFor(modelItem => item.CompanyName)
             </td>
-            <td>
+            <td class="col-lg-1">
                 @Html.DisplayFor(modelItem => item.DepartamentName)
             </td>
-            <td>
+            <td class="col-lg-1">
                 @Html.DisplayFor(modelItem => item.ResponsibleName)
             </td>
-            <td>
+            <td class="col-lg-1">
                 <a asp-action="Edit" asp-route-id="@item.Id"><img src="~/images/edit_icon.png" width="20" height="20" alt="Редагувати" title="Редагувати" /></a> |
                 <a asp-action="Details" asp-route-id="@item.Id"><img src="~/images/preview_icon.png" width="20" height="20" alt="Перегляд" title="Перегляд" /></a> |
                 <a asp-action="Delete" asp-route-id="@item.Id"><img src="~/images/delete_icon.png" width="20" height="20" alt="Видалити" title="Видалити" /></a>

@@ -1,51 +1,21 @@
 ﻿@model DocsExchange.ViewModels.ContractsView
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = String.Concat("Договір №: ", @Model.DocNumber);
 }
 
-@section Scripts {
+<h3>Перегляд договору</h3>
 
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#AutoCcDep').autocomplete({
-                source: '/Search/AutocompleteSearchDepartaments',
-                minLength: 3,
-                delay: 400
-            });
-            $('#AutoCcCompany').autocomplete({
-                source: '/Search/AutocompleteSearchCompanies',
-                minLength: 3,
-                delay: 400
-            });
-            $('#AutoCcEmployee').autocomplete({
-                source: '/Search/AutocompleteSearchEmployee',
-                minLength: 3,
-                delay: 400
-            });
-            $('#AutoCcPartner').autocomplete({
-                source: '/Search/AutocompleteSearchPartner',
-                minLength: 3,
-                delay: 400
-            });
-        });
-
-    </script>
-}
-
-    <h3>Перегляд договору</h3>
-
-@*<h4>Contracts</h4>*@
 <hr />
 <div class="row">
     @using (Html.BeginForm())
     {
-
         @Html.AntiForgeryToken()
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <table class="col-md-6">
+            <tr>
+                <td class="col-md-1">@Html.LabelFor(model => model.DocNumber, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-5">@Html.DisplayFor(model => model.DocNumber, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
             <tr>
                 <td class="col-md-1">@Html.LabelFor(model => model.DateStart, htmlAttributes: new { @class = "control-label" })</td>
                 <td class="col-md-5">@Html.DisplayFor(model => model.DateStart, new { htmlAttributes = new { @class = "form-control" } })</td>
@@ -53,10 +23,6 @@
             <tr>
                 <td class="col-md-1">@Html.LabelFor(model => model.DateEnd, htmlAttributes: new { @class = "control-label" })</td>
                 <td class="col-md-5">@Html.DisplayFor(model => model.DateEnd, new { htmlAttributes = new { @class = "form-control" } })</td>
-            </tr>
-            <tr>
-                <td class="col-md-1">@Html.LabelFor(model => model.DocNumber, htmlAttributes: new { @class = "control-label" })</td>
-                <td class="col-md-5">@Html.DisplayFor(model => model.DocNumber, new { htmlAttributes = new { @class = "form-control" } })</td>
             </tr>
             <tr>
                 <td class="col-md-1">@Html.LabelFor(model => model.ResponsibleName, htmlAttributes: new { @class = "control-label" })</td>
@@ -74,28 +40,23 @@
                 <td class="col-md-1">@Html.LabelFor(model => model.CompanyName, htmlAttributes: new { @class = "control-label" })</td>
                 <td class="col-md-5">@Html.DisplayFor(model => model.CompanyName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcCompany" } })</td>
             </tr>
-            <tr>
-                <td class="col-md-1">@Html.LabelFor(model => model.IsDeleted, htmlAttributes: new { @class = "control-label" })</td>
-                <td class="col-md-5">@Html.DisplayFor(m => m.IsDeleted)</td>
-            </tr>
-            <tr>
-                <td class="col-md-1">@Html.LabelFor(model => model.FileName, htmlAttributes: new { @class = "control-label" })</td>
-                <td class="col-md-5"><a asp-action="ShowPdf" asp-route-id="@Model.Id">@Model.FileName</a></td>
-            </tr>
-            <tr>
-                <td class="col-md-1"></td>
-                <td class="col-md-5"><input type="submit" value="Save" class="btn btn-default" /></td>
-            </tr>
+            @if (@Model.FileName != null)
+            {
+                <tr>
+                    <td class="col-md-1">@Html.LabelFor(model => model.FileName, htmlAttributes: new { @class = "control-label" })</td>
+                    <td class="col-md-5"><a asp-action="ShowPdf" asp-route-id="@Model.Id">@Model.FileName</a></td>
+                </tr>
+            }
+                <tr>
+                    <td class="col-md-1"><hr /></td>
+                    <td class="col-md-5"><hr /></td>
+                </tr>
         </table>
 
     }
 
 </div>
 <input type="hidden" asp-for="Id" />
-<div>
-    <a asp-action="Index">Back to List</a>
+<div style="margin-top: 5px">
+    <a asp-action="Index"><img src="~/images/arrow_left1.png"> До списку...</a>
 </div>
-
-@*@section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }*@

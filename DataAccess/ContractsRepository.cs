@@ -79,5 +79,9 @@ namespace DataAccess
         {
             return _context.Contracts.Where(c => c.Partner == partner.Id).ToList();
         }
+        public IEnumerable<Contracts> GetByCompany(Company company)
+        {
+            return _context.Contracts.Where(c => c.Company == company.Id).ToList();
+        }
     }
 }

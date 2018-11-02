@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BusinessLogic;
 using DocsExchange.Models;
+using DocsExchange.Models.Filters;
 using Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,17 +14,20 @@ namespace DocsExchange.Controllers
     public class CompanyController : Controller
     {
         private readonly ICompanyBusinessLogic _companyBusinessLogic;
+        private readonly IContractsBusinessLogic _contractsBusinessLogic;
 
-        public CompanyController(ICompanyBusinessLogic companyBusinessLogic)
+        public CompanyController(ICompanyBusinessLogic companyBusinessLogic, IContractsBusinessLogic contractsBusinessLogic)
         {
             _companyBusinessLogic = companyBusinessLogic;
+            _contractsBusinessLogic = contractsBusinessLogic;
         }
 
         public IActionResult Index()
         {
             if (HttpContext.User.Identity.IsAuthenticated == true)
             {
-                return View(_companyBusinessLogic.GetActive());
+                ViewBag.Data = _companyBusinessLogic.GetActive().ToList();
+                return View();
             }
             else
             {
@@ -49,34 +53,86 @@ namespace DocsExchange.Controllers
                 return View();
             }
         }
-        public IActionResult Edit(Company company)
+        public ActionResult Edit(int id)
         {
-            return View(_companyBusinessLogic.Get(company.Id));
+            var company = _companyBusinessLogic.Get(id);
+            return View(company);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Company company)
-        {
-            _companyBusinessLogic.Update(company);
-            return RedirectToAction(nameof(Index));
-        }
-
-        public IActionResult Delete(int id)
+        public ActionResult Edit(int id, Company company)
         {
             try
             {
-                _companyBusinessLogic.Delete(id);
+                _companyBusinessLogic.Update(company);
                 return RedirectToAction(nameof(Index));
+            }
+            catch (Exception e)
+            {
+                return View();
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var company = _companyBusinessLogic.Get(id);
+            return View(company);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, Company company)
+        {
+            try
+            {
+                if ((_contractsBusinessLogic.GetByPartner(_companyBusinessLogic.Get(id)) == null)
+                    && (_contractsBusinessLogic.GetByCompany(_companyBusinessLogic.Get(id)) == null))
+                {
+                    _companyBusinessLogic.Delete(id);
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(_companyBusinessLogic.Get(id));
             }
             catch
             {
-                return RedirectToAction(nameof(Index));
+                return View(_companyBusinessLogic.Get(id));
             }
         }
-        
+
+        public ActionResult Details(int id)
+        {
+            var company = _companyBusinessLogic.Get(id);
+            return View(company);
+        }
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Filter(FilterCompanies filtersEvents)
+        {
+            var companyFilter = filtersEvents.Name;
+            
+            var companies = _companyBusinessLogic
+                .GetAll()
+                .Where(@company =>
+                    FilterByName(@company, companyFilter))
+                .ToList();
+            
+            ViewBag.Data = companies.OrderBy(x => x.Name).ToList();
+            return View(nameof(Index));
+        }
+        private bool FilterByName(Company @event, string companyFilter)
+        {
+            if (String.IsNullOrEmpty(companyFilter))
+                return true;
+            if (@event.Name == null)
+                return false;
+            var company = _companyBusinessLogic.GetByName(@event.Name);
+            if (company.Name.Contains(companyFilter))
+                return true;
+            return false;
         }
     }
 }

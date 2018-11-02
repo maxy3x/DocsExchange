@@ -12,5 +12,6 @@ namespace DataAccess
         IEnumerable<Company> GetAll();
         IEnumerable<Company> GetActive();
         List<Company> GetByStr(string searchStr);
+        Company GetByName(string searchStr);
     }
 }

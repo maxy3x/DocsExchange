@@ -49,6 +49,10 @@ namespace BusinessLogic
         {
             return _repository.GetByPartner(partner);
         }
+        public IEnumerable<Contracts> GetByCompany(Company company)
+        {
+            return _repository.GetByCompany(company);
+        }
         public IEnumerable<Contracts> GetByEmployee(Employee employee)
         {
             return _repository.GetByEmployee(employee);
