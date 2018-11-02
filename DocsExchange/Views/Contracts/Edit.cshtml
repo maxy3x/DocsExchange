@@ -78,7 +78,7 @@
             </tr>
             <tr>
                 <td class="col-md-1">@Html.LabelFor(model => model.Files, htmlAttributes: new { @class = "control-label" })</td>
-                <td class="col-md-5"><input name="Files" type="file" class="form-control" multiple /></td>
+                <td class="col-md-5"><input name="Files" type="file" accept="application/pdf" class="form-control" multiple /></td>
             </tr>
             @if (@Model.FileName != null)
             {

@@ -202,6 +202,8 @@ namespace DocsExchange.Controllers
                 if (contract.Files != null)
                     if (contract.Files.ContentType == "application/pdf")
                         {contract.FileName = contract.Files.FileName;}
+                    else
+                    { return View(); }
                 _contractsBusinessLogic.Update(_mapper.Map<Contracts>(contract));
                 return RedirectToAction(nameof(Index));
             }
