@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DocsExchange.Controllers
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "Admin")]
     public class CompanyController : Controller
     {
         private readonly ICompanyBusinessLogic _companyBusinessLogic;

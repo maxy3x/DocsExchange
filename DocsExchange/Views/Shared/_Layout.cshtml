@@ -33,13 +33,15 @@
                 </button>
                 <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">DocsExchange</a>
             </div>
-            @if (SignInManager.IsSignedIn(User))
+            @if (User.IsInRole("User"))
             {
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
                         <li><a asp-area="" asp-controller="Contracts" asp-action="Index">Договори</a></li>
-                        <li><a asp-area="" asp-controller="Company" asp-action="Index">Наші фірми</a></li>
-                        <li><a asp-area="" asp-controller="Roles" asp-action="Index">Ролі</a></li>
+                        @*<li><a asp-area="" asp-controller="Company" asp-action="Index">Наші фірми</a></li>
+                            <li><a asp-area="" asp-controller="Roles" asp-action="Index">Ролі</a></li>*@
+                        @if (User.IsInRole("Admin"))
+                            {<li><a asp-area="" asp-controller="Admin" asp-action="Index">Admin Panel</a></li>}
                     </ul>
                     @await Html.PartialAsync("_LoginPartial")
                 </div>
