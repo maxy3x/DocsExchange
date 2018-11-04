@@ -8,10 +8,12 @@ using DocsExchange.Models;
 using DocsExchange.Models.Filters;
 using DocsExchange.ViewModels;
 using Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DocsExchange.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class CompanyController : Controller
     {
         private readonly ICompanyBusinessLogic _companyBusinessLogic;

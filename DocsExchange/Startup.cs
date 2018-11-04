@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using AutoMapper;
 using System.Net;
 using System.Threading.Tasks;
 using BusinessLogic;
 using DataAccess;
 using DataAccess.Context;
+using DataAccess.Initializers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -76,8 +75,6 @@ namespace DocsExchange
                 using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>()
                     .CreateScope())
                 {
-                    //serviceScope.ServiceProvider.GetService<DocsDbContext>().Database.Migrate();
-
                     var services = serviceScope.ServiceProvider;
                     try
                     {
@@ -90,7 +87,6 @@ namespace DocsExchange
                         logger.LogError(ex, "An error occurred while seeding the database.");
                     }
                 }
-
             }
             catch (Exception ex)
             {

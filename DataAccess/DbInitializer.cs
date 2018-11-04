@@ -1,12 +1,14 @@
-﻿using DataAccess.Context;
+﻿using System;
+using DataAccess.Context;
 using System.Linq;
 using Domain.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace DataAccess
 {
     public class DbInitializer
     {
-        public static void Initialize(DocsDbContext context)
+        public static async void Initialize(DocsDbContext context)
         {
             context.Database.EnsureCreated();
             if (!context.Departament.Any())

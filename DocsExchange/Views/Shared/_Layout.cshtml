@@ -1,4 +1,4 @@
-@using Microsoft.AspNetCore.Http
+﻿@using Microsoft.AspNetCore.Http
 
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
@@ -39,6 +39,7 @@
                     <ul class="nav navbar-nav">
                         <li><a asp-area="" asp-controller="Contracts" asp-action="Index">Договори</a></li>
                         <li><a asp-area="" asp-controller="Company" asp-action="Index">Наші фірми</a></li>
+                        <li><a asp-area="" asp-controller="Roles" asp-action="Index">Ролі</a></li>
                     </ul>
                     @await Html.PartialAsync("_LoginPartial")
                 </div>
