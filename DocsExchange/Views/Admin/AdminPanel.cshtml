@@ -1,20 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Панель керування";
 }
-
-
-    <table class="col-lg-3">
-        <tr>
-            <td class="col-lg-1"><a asp-controller="Company" asp-action="Index"><img src="~/images/" /> Компанії</a></td>
-            <td class="col-lg-1"><a asp-controller="Employee" asp-action="Index"><img src="~/images/users_icon2.png" width="128" height="128" /> Співробітники</a></td>
-            <td class="col-lg-1"><a asp-controller="Departament" asp-action="Index"><img src="~/images/departaments_icon1.png" width="128" height="128" /> Відділи</a></td>
-        </tr>
-        <tr><td class="col-lg-1"><hr /></td>
-        <td class="col-lg-1"><hr /></td>
-        <td class="col-lg-1"><hr /></td></tr>
-        <tr>
-            <td class="col-lg-1"><a asp-controller="Roles" asp-action="Index"><img src="~/images/roles_icon2.png" width="128" height="128" /> Компанії</a></td>
-            <td class="col-lg-1"></td>
-            <td class="col-lg-1"></td>
-        </tr>
-    </table>
+<link rel="stylesheet" href="~/css/main.css" media="screen" type="text/css" />
+<br>
+<body>
+<div style="width: 100%">
+        <table class="col-lg-3 table" style="text-align: center; font-weight: bold;">
+            <tr>
+                <td colspan="3" class="col-lg-1" style="background-color: #92d9f4; text-align: center; font-weight: bold;">Довідники</td>
+            </tr>
+            <tr >
+                <td class="col-lg-1"><a asp-controller="Company" asp-action="Index"><img src="~/images/companies_list.png" width="128" height="128" title="Список компаній"/></a></td>
+                <td class="col-lg-1"><a asp-controller="Employee" asp-action="Index"><img src="~/images/users_icon2.png" width="128" height="128" title="Співробітники"/></a></td>
+                <td class="col-lg-1"><a asp-controller="Departament" asp-action="Index"><img src="~/images/departaments_icon1.png" width="128" height="128" title="Відділи"/></a></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="col-lg-1" style="background-color: #92d9f4;">Контроль доступу</td>
+            </tr>
+            <tr>
+                <td class="col-lg-1"><a asp-controller="Roles" asp-action="Index"><img src="~/images/roles_icon2.png" width="128" height="128" title="Ролі"/></a></td>
+                <td class="col-lg-1"></td>
+                <td class="col-lg-1"></td>
+            </tr>
+        </table>
+</div>
+</body>

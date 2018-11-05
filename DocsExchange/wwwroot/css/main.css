@@ -13,3 +13,8 @@ div.main-logo-div img {
     position: inherit;
     left: 40%;
 }
+
+table.table-adminpanel {
+    border-collapse: separate;
+    border: 1px solid lightgray;
+}
