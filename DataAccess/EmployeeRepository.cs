@@ -60,5 +60,9 @@ namespace DataAccess
         {
             return _context.Employee.ToList();
         }
+        public IEnumerable<Employee> GetByDepartament(Departament departament)
+        {
+            return _context.Employee.Where(c => c.Departament == departament.Id).ToList();
+        }
     }
 }

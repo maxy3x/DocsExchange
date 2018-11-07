@@ -2,14 +2,8 @@
 
 namespace DocsExchange.Models.Filters
 {
-    public class FilterContracts
+    public class FilterCompanies
     {
-        public string Number { get; set; }
-        public DateTime DateStart { get; set; }
-        public DateTime DateEnd { get; set; }
-        public string Departament { get; set; }
-        public string Responsible { get; set; }
-        public string Partner { get; set; }
-        public string Comany { get; set; }
+        public string Name { get; set; }
     }
 }

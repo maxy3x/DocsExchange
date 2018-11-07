@@ -41,11 +41,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Departament\" />
-    <Folder Include="Views\Employee\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="System.Web.Services">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Web.Services.dll</HintPath>
     </Reference>

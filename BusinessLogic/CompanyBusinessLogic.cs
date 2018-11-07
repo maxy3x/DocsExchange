@@ -45,9 +45,5 @@ namespace BusinessLogic
         {
             return _repository.GetByStr(searchStr);
         }
-        public Company GetByName(string searchStr)
-        {
-            return _repository.GetByName(searchStr);
-        }
     }
 }

@@ -100,7 +100,7 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DepartamentId");
+                    b.Property<int>("Departament");
 
                     b.Property<string>("FirstName")
                         .IsRequired();
@@ -117,13 +117,9 @@ namespace DataAccess.Migrations
                     b.Property<string>("SecondName")
                         .IsRequired();
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("User");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DepartamentId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Employee");
                 });
@@ -287,18 +283,6 @@ namespace DataAccess.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("Domain.Models.Employee", b =>
-                {
-                    b.HasOne("Domain.Models.Departament", "Departament")
-                        .WithMany()
-                        .HasForeignKey("DepartamentId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -15,7 +15,7 @@ namespace Domain.Models
         public int OkpoCode { get; set; }
         public string Patronymic { get; set; }
         [Required]
-        public Departament Departament { get; set; }
-        public IdentityUser User { get; set; }
+        public int Departament { get; set; }
+        public string User { get; set; }
     }
 }

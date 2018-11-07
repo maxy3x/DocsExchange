@@ -58,9 +58,5 @@ namespace DataAccess
         {
             return _context.Company.Where(c => c.Name.Contains(searchStr)).ToList();
         }
-        public Company GetByName(string searchStr)
-        {
-            return _context.Company.FirstOrDefault(c => c.Name.Contains(searchStr));
-        }
     }
 }

@@ -42,5 +42,9 @@ namespace BusinessLogic
         {
             return _repository.GetByStr(searchStr);
         }
+        public IEnumerable<Employee> GetByDepartament(Departament departament)
+        {
+            return _repository.GetByDepartament(departament);
+        }
     }
 }

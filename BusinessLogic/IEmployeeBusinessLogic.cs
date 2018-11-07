@@ -11,5 +11,6 @@ namespace BusinessLogic
         void Delete(int id);
         IEnumerable<Employee> GetAll();
         List<Employee> GetByStr(string searchStr);
+        IEnumerable<Employee> GetByDepartament(Departament departament);
     }
 }

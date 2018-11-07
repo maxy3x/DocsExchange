@@ -34,21 +34,21 @@ namespace DataAccess
                         Name = "Максим Біловус",
                         FirstName = "Максим",
                         SecondName = "Біловус",
-                        Departament = context.Departament.FirstOrDefault(c=>c.Id == 1)
+                        Departament = context.Departament.FirstOrDefault(c=>c.Id == 1).Id
                     },
                     new Employee()
                     {
                         Name = "Денисюк Анастасія",
                         FirstName = "Анастасія",
                         SecondName = "Денисюк",
-                        Departament = context.Departament.FirstOrDefault(c=>c.Id == 1)
+                        Departament = context.Departament.FirstOrDefault(c=>c.Id == 1).Id
                     },
                     new Employee()
                     {
                         Name = "ІГ",
                         FirstName = "І",
                         SecondName = "Г",
-                        Departament = context.Departament.FirstOrDefault(c=>c.Id == 3)
+                        Departament = context.Departament.FirstOrDefault(c=>c.Id == 3).Id
                     }
                 };
                 foreach (var item in employee)

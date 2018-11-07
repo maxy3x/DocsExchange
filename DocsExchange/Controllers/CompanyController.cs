@@ -141,8 +141,8 @@ namespace DocsExchange.Controllers
                 return true;
             if (@event.Name == null)
                 return false;
-            var company = _companyBusinessLogic.GetByName(@event.Name);
-            if (company.Name.Contains(companyFilter))
+            var company = _companyBusinessLogic.GetByStr(@event.Name).FirstOrDefault();
+            if (company != null && company.Name.Contains(companyFilter))
                 return true;
             return false;
         }

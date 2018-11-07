@@ -1,0 +1,59 @@
+﻿@model DocsExchange.ViewModels.DepartamentView
+
+@{
+    ViewData["Title"] = "Новий співробітник";
+}
+
+@section Scripts {
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#AutoCcEmployee').autocomplete({
+                source: '/Search/AutocompleteSearchEmployee',
+                minLength: 3,
+                delay: 400
+            });
+        });
+
+    </script>
+}
+
+    <h3>Створення співробітника</h3>
+
+<hr />
+<div class="row">
+    @using (Html.BeginForm())
+    {
+
+        @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <table class="col-md-6">
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcEmployee" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2"><hr /></td>
+                <td class="col-md-4"><hr /></td>
+            </tr>
+            <tr>
+                <td class="col-md-2"></td>
+                <td class="col-md-4">
+                    <button type="submit" value="Зберегти" class="btn btn-default" style="border: none; background-color: Transparent;"><img src="~/images/save_icon.png" title="Зберегти" width="20" height="25" /> Зберегти</button>
+                </td>
+
+            </tr>
+        </table>
+
+
+
+    }
+
+</div>
+<input type="hidden" asp-for="Id" />
+<div>
+    <a asp-action="Index"><img src="~/images/arrow_left1.png"> До списку...</a>
+</div>

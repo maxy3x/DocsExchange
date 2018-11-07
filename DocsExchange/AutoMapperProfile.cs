@@ -29,7 +29,15 @@ namespace DocsExchange
             CreateMap<Company, CompanyView>()
                 .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>());
             CreateMap<CompanyView, Company>();
+            CreateMap<Departament, DepartamentView>()
+                .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>());
+            CreateMap<DepartamentView, Departament>();
+            CreateMap<Employee, EmployeeView>()
+                .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>())
+                .ForMember(x => x.Message, c => c.ResolveUsing<EmpDepartamentResolver>());
 
+            CreateMap<EmployeeView, Employee>()
+                .ForMember(x => x.Departament, c => c.ResolveUsing<EmpDepartamentResolverReverse>());
         }
     }
     public class DepartamentResolver : IValueResolver<Contracts, ContractsView, string>
@@ -169,12 +177,38 @@ namespace DocsExchange
         }
 
     }
-    public class MessageResolver : IValueResolver<Company, CompanyView, String>
+    public class MessageResolver : IValueResolver<Object, Object, String>
     {
-        public string Resolve(Company source, CompanyView destination, string message, ResolutionContext context)
+        public string Resolve(Object source, Object destination, string message, ResolutionContext context)
         {
             var messageNew = "";
             return messageNew;
+        }
+    }
+    public class EmpDepartamentResolver : IValueResolver<Employee, EmployeeView, string>
+    {
+        private readonly IDepartamentBusinessLogic _departamentBusinessLogic;
+        public EmpDepartamentResolver(IDepartamentBusinessLogic departamentBusinessLogic)
+        {
+            _departamentBusinessLogic = departamentBusinessLogic;
+        }
+        public string Resolve(Employee source, EmployeeView destination, string destMember, ResolutionContext context)
+        {
+            var departament = _departamentBusinessLogic.Get(source.Departament);
+            return departament.Name;
+        }
+    }
+    public class EmpDepartamentResolverReverse : IValueResolver<EmployeeView, Employee, int>
+    {
+        private readonly IDepartamentBusinessLogic _departamentBusinessLogic;
+        public EmpDepartamentResolverReverse(IDepartamentBusinessLogic departamentBusinessLogic)
+        {
+            _departamentBusinessLogic = departamentBusinessLogic;
+        }
+        public int Resolve(EmployeeView source, Employee destination, int destMember, ResolutionContext context)
+        {
+            var departament = _departamentBusinessLogic.GetDepByStr(source.DepartamentName).FirstOrDefault();
+            return departament.Id;
         }
     }
 }

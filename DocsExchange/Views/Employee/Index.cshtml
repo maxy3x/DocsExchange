@@ -1,0 +1,99 @@
+﻿@using DocsExchange.Models.Filters
+@using DocsExchange.ViewModels
+@using Domain.Models
+@model DocsExchange.Models.Filters.FilterEployees
+
+@{
+    ViewData["Title"] = "Довідник співробітників";
+}
+
+@section Scripts {
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#AutoCcEmployee').autocomplete({
+                source: '/Search/AutocompleteSearchEmployee',
+                minLength: 3,
+                delay: 400
+            });
+            $('#AutoCcDep').autocomplete({
+                source: '/Search/AutocompleteSearchDepartaments',
+                minLength: 3,
+                delay: 400
+            });
+        });
+    </script>
+}
+
+    <h2>Довідник співробітників</h2>
+
+@using (Html.BeginForm("Filter", "Employee", FormMethod.Post))
+{
+    <fieldset>
+        <form asp-action="Filter">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <table class="table-condensed" id="filtersContracts">
+                <thead>
+                    <tr>
+                        <th>Ім'я</th>
+                        <th>ОКПО</th>
+                        <th>Відділ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@Html.EditorFor(x => x.Name, new { htmlAttributes = new { @id = "AutoCcEmployee", @class = "EditorRadius" } })</td>
+                        <td>@Html.EditorFor(x => x.OkpoCode, new { htmlAttributes = new { @class = "EditorRadius" } })</td>
+                        <td>@Html.EditorFor(x => x.Departament, new { htmlAttributes = new { @id = "AutoCcDep", @class = "EditorRadius" } })</td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <div class="form-group">
+                <button type="submit" value="Шукати" style="border: none; background-color: Transparent;"><img src="~/images/search_icon.png" title="Шукати" width="25" height="25" /></button> | <a asp-action="Index">Показати всі..</a>
+            </div>
+        </form>
+    </fieldset>
+}
+
+<p>
+    <a asp-action="Create"><img src="~/images/add.png"> Створити новий</a>
+</p>
+<table class="table col-lg-5">
+    <thead>
+        <tr>
+            <th class="col-lg-1">Ім'я</th>
+            <th class="col-lg-1">ОКПО</th>
+            <th class="col-lg-1">Відділ</th>
+            <th class="col-lg-1">Користувач</th>
+            <th class="col-lg-1">Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (EmployeeView item in ViewBag.Data)
+        {
+        <tr>
+            <td class="col-lg-1">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td class="col-lg-1">
+                @Html.DisplayFor(modelItem => item.OkpoCode)
+            </td>
+            <td  class="col-lg-1">
+                @Html.DisplayFor(modelItem => item.Departament)
+            </td>
+            <td  class="col-lg-1">
+                @Html.DisplayFor(modelItem => item.User)
+            </td>
+            <td class="col-lg-1">
+                <a asp-action="Edit" asp-route-id="@item.Id"><img src="~/images/edit_icon.png" width="20" height="20" alt="Редагувати" title="Редагувати" /></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><img src="~/images/preview_icon.png" width="20" height="20" alt="Перегляд" title="Перегляд" /></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><img src="~/images/delete_icon.png" width="20" height="20" alt="Видалити" title="Видалити" /></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
