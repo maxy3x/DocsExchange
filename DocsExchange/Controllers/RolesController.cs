@@ -4,9 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using DocsExchange.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DocsExchange.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
         // GET
