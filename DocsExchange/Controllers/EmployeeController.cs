@@ -18,13 +18,15 @@ namespace DocsExchange.Controllers
     {
         private readonly IContractsBusinessLogic _contractsBusinessLogic;
         private readonly IEmployeeBusinessLogic _employeeBusinessLogic;
+        private readonly IDepartamentBusinessLogic _departamentBusinessLogic;
         private readonly IMapper _mapper;
 
-        public EmployeeController(IContractsBusinessLogic contractsBusinessLogic, IMapper mapper, IEmployeeBusinessLogic employeeBusinessLogic)
+        public EmployeeController(IContractsBusinessLogic contractsBusinessLogic, IMapper mapper, IEmployeeBusinessLogic employeeBusinessLogic, IDepartamentBusinessLogic departamentBusinessLogic)
         {
             _contractsBusinessLogic = contractsBusinessLogic;
             _mapper = mapper;
             _employeeBusinessLogic = employeeBusinessLogic;
+            _departamentBusinessLogic = departamentBusinessLogic;
         }
 
         public IActionResult Index()
@@ -119,10 +121,16 @@ namespace DocsExchange.Controllers
         public ActionResult Filter(FilterEployees filtersEvents)
         {
             var emplFilter = filtersEvents.Name;
+            var okpoFilter = filtersEvents.OkpoCode;
+            var departamentFilter = filtersEvents.Departament;
             var employees = _employeeBusinessLogic
                 .GetAll()
                 .Where(@emp =>
-                    FilterByName(@emp, emplFilter))
+                    FilterByDepartament(@emp, departamentFilter)
+                    &&
+                    FilterByName(@emp, emplFilter)
+                    &&
+                    FilterByOKPO(@emp, okpoFilter))
                 .ToList();
             List<EmployeeView> models = new List<EmployeeView>();
             foreach (var item in employees)
@@ -140,6 +148,27 @@ namespace DocsExchange.Controllers
                 return false;
             var emp = _employeeBusinessLogic.GetByStr(@event.Name).FirstOrDefault();
             if (emp != null && emp.Name.Contains(empFilter))
+                return true;
+            return false;
+        }
+        private bool FilterByDepartament(Employee @event, string departamentFilter)
+        {
+            if (String.IsNullOrEmpty(departamentFilter))
+                return true;
+            if (@event.Departament == 0)
+                return false;
+            var departament = _departamentBusinessLogic.Get(@event.Departament);
+            if (departament.Name.Contains(departamentFilter))
+                return true;
+            return false;
+        }
+        private bool FilterByOKPO(Employee @event, int number)
+        {
+            if (number == 0)
+                return true;
+            if (@event.OkpoCode == 0)
+                return true;
+            if (@event.OkpoCode == number)
                 return true;
             return false;
         }

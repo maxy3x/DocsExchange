@@ -6,15 +6,18 @@ body {
 .main-signin {
   box-shadow: 0px 10px 20px #000;
   width: 455px;
-  height: 360px;
+  height: 290px;
   margin: 120px auto;
 }
-.main-signin .main-signin__head {
-  background: #242328;
-  border-bottom: 1px solid #2d2f32;
-  border-radius: 10px 10px 0 0;
-  box-shadow: 0px 1px 0px #000;
-  padding: 12px 0;
+    .main-signin .main-signin__head {
+        background: #242328;
+        border-bottom: 1px solid #2d2f32;
+        border-radius: 10px 10px 10px 10px;
+        box-shadow: 0px 1px 0px #000;
+        padding: 12px 0;
+    }
+.main-signin__middle {
+    border-radius: 10px 10px 0 0;
 }
 .main-signin .main-signin__head p {
   color: #586069;
@@ -171,4 +174,7 @@ body {
 .main-logo-div {
     margin: 20px;
     border-color: #000000
+}
+.form-login-post {
+    border-radius: 20px 20px 20px 20px;
 }

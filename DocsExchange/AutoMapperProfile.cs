@@ -34,7 +34,7 @@ namespace DocsExchange
             CreateMap<DepartamentView, Departament>();
             CreateMap<Employee, EmployeeView>()
                 .ForMember(x => x.Message, c => c.ResolveUsing<MessageResolver>())
-                .ForMember(x => x.Message, c => c.ResolveUsing<EmpDepartamentResolver>());
+                .ForMember(x => x.DepartamentName, c => c.ResolveUsing<EmpDepartamentResolver>());
 
             CreateMap<EmployeeView, Employee>()
                 .ForMember(x => x.Departament, c => c.ResolveUsing<EmpDepartamentResolverReverse>());

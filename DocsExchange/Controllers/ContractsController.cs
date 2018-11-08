@@ -77,7 +77,7 @@ namespace DocsExchange.Controllers
                 return true;
             if (@event.DocNumber == null)
                 return true;
-            if (String.Compare(@event.DocNumber,number)>0)
+            if (String.CompareOrdinal(@event.DocNumber,number)>0)
                 return true;
             return false;
         }
@@ -85,7 +85,7 @@ namespace DocsExchange.Controllers
         {
             if (startDate == DateTime.MinValue)
                 return true;
-            if (@event.DateStart == null)
+            if (@event.DateStart == DateTime.MinValue)
                 return false;
             if (@event.DateStart >= startDate)
                 return true;
@@ -95,7 +95,7 @@ namespace DocsExchange.Controllers
         {
             if (endDate == DateTime.MinValue)
                 return true;
-            if (@event.DateEnd == null)
+            if (@event.DateEnd == DateTime.MinValue)
                 return false;
             if (@event.DateEnd <= endDate)
                 return true;
@@ -105,7 +105,7 @@ namespace DocsExchange.Controllers
         {
             if (String.IsNullOrEmpty(departamentFilter))
                 return true;
-            if (@event.Departament == null)
+            if (@event.Departament == 0)
                 return false;
             var departament = _departamentBusinessLogic.Get(@event.Departament);
             if (departament.Name.Contains(departamentFilter))
@@ -116,7 +116,7 @@ namespace DocsExchange.Controllers
         {
             if (String.IsNullOrEmpty(responsibleFilter))
                 return true;
-            if (@event.Responsible == null)
+            if (@event.Responsible == 0)
                 return false;
             var responsible = _employeeBusinessLogic.Get(@event.Responsible);
             if (responsible.Name.Contains(responsibleFilter))
@@ -127,7 +127,7 @@ namespace DocsExchange.Controllers
         {
             if (String.IsNullOrEmpty(partnerFilter))
                 return true;
-            if (@event.Partner == null)
+            if (@event.Partner == 0)
                 return false;
             var partner = _companyBusinessLogic.Get(@event.Partner);
             if (partner.Name.Contains(partnerFilter))
@@ -138,7 +138,7 @@ namespace DocsExchange.Controllers
         {
             if (String.IsNullOrEmpty(companyFilter))
                 return true;
-            if (@event.Company == null)
+            if (@event.Company == 0)
                 return false;
             var company = _companyBusinessLogic.Get(@event.Company);
             if (company.Name.Contains(companyFilter))

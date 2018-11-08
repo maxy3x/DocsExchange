@@ -79,11 +79,11 @@
     </div>*@
 <section>
     <div class="main-signin">
-        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+        <form asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-login-post">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="main-signin__head">
-                <p>DIADEMA / EXCHANGE</p>
-            </div>
+            @*<div class="main-signin__head">
+                <p>DocsExchange</p>
+            </div>*@
             <div class="main-signin__middle">
                 <div class="middle__form">
                     @*<input type="text" placeholder="Логин">
@@ -93,28 +93,28 @@
                     <input asp-for="Email" type="text" placeholder="Login" class="form-control" />
                     @*<label asp-for="Password"></label>*@
                     <input asp-for="Password" class="form-control" placeholder="Password" />
-                    <input type="submit" value="ВОЙТИ" class="btn">
+                    <input type="submit" value="Увійти" class="btn">
                 </div>
-                <div class="form-group" align="left" style="margin-left: 5%">
+                @*<div class="form-group" align="left" style="margin-left: 5%">
                     <div class="checkbox">
                         <label asp-for="RememberMe">
                             <input asp-for="RememberMe" />
                             @Html.DisplayNameFor(m => m.RememberMe)
                         </label>
                     </div>
-                </div>
+                </div>*@
                 <div align="center">
                     <p>
-                        <a asp-action="ForgotPassword">Forgot your password?</a>
+                        <a asp-action="ForgotPassword">Забули пароль?</a>
                         <a> / </a>
-                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Register as a new user?</a>
+                        <a asp-action="Register" asp-route-returnurl="@ViewData["ReturnUrl"]">Зареєструватись?</a>
                     </p>
                 </div>
             </div>
         </form>
         <div class="main-signin__foot">
             <div class="foot__left">
-                <p>Войти через:</p>
+                <p>Увійти через:</p>
             </div>
             <form asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
                 <div class="foot__right">

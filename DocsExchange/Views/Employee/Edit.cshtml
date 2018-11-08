@@ -16,6 +16,11 @@
                 minLength: 3,
                 delay: 400
             });
+            $('#AutoCcDep').autocomplete({
+                source: '/Search/AutocompleteSearchDepartaments',
+                minLength: 3,
+                delay: 400
+            });
         });
 
     </script>
@@ -34,6 +39,26 @@
             <tr>
                 <td class="col-md-2">@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })</td>
                 <td class="col-md-4">@Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcEmployee" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcEmployee" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.SecondName, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.EditorFor(model => model.SecondName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcEmployee" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.Patronymic, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.EditorFor(model => model.Patronymic, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcEmployee" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.OkpoCode, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.EditorFor(model => model.OkpoCode, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.Departament, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.EditorFor(model => model.DepartamentName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcDep" } })</td>
             </tr>
             <tr>
                 <td class="col-md-2"><hr /></td>
