@@ -9,18 +9,54 @@
 <div class="row">
     @using (Html.BeginForm())
     {
+
         @Html.AntiForgeryToken()
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <table class="col-md-6">
             <tr>
                 <td class="col-md-2">@Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })</td>
-                <td class="col-md-4">@Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })</td>
+                <td class="col-md-4">@Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcEmployee" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.DisplayFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.SecondName, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.DisplayFor(model => model.SecondName, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.Patronymic, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.DisplayFor(model => model.Patronymic, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.Okpo, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.DisplayFor(model => model.Okpo, new { htmlAttributes = new { @class = "form-control" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.Departament, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.DisplayFor(model => model.DepartamentName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcDep" } })</td>
+            </tr>
+            <tr>
+                <td class="col-md-2">@Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label" })</td>
+                <td class="col-md-4">@Html.DisplayFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control", @id = "AutoCcUser" } })</td>
             </tr>
             <tr>
                 <td class="col-md-2"><hr /></td>
                 <td class="col-md-4"><hr /></td>
             </tr>
+            <tr>
+                <td class="col-md-2"></td>
+                <td class="col-md-4">
+                    <button type="submit" value="Зберегти" class="btn btn-default" style="border: none; background-color: Transparent;"><img src="~/images/save_icon.png" title="Зберегти" width="20" height="25" /> Зберегти</button>
+                    <button asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-default" style="border: none; background-color: Transparent;"><img src="~/images/delete_icon.png" title="Видалити" width="20" height="20" /> Видалити</button>
+                </td>
+
+            </tr>
         </table>
+
+
+
     }
 
 </div>

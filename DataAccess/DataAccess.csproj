@@ -43,6 +43,8 @@
     <Compile Include="Migrations\20181107195332_corrected employee table.Designer.cs" />
     <Compile Include="Migrations\20181109070745_add long OKPO to eployee.cs" />
     <Compile Include="Migrations\20181109070745_add long OKPO to eployee.Designer.cs" />
+    <Compile Include="Migrations\20181109071314_deleted int OKPOkode.cs" />
+    <Compile Include="Migrations\20181109071314_deleted int OKPOkode.Designer.cs" />
     <Compile Include="Migrations\DocsDbContextModelSnapshot.cs" />
   </ItemGroup>
 

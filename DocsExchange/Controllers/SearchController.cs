@@ -7,6 +7,7 @@ using DataAccess;
 using DocsExchange.Models;
 using Domain.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Controller = Microsoft.AspNetCore.Mvc.Controller;
 using JsonResult = Microsoft.AspNetCore.Mvc.JsonResult;
@@ -20,12 +21,14 @@ namespace DocsExchange.Controllers
         private readonly IDepartamentBusinessLogic _depBusinessLogic;
         private readonly ICompanyBusinessLogic _companyBusinessLogic;
         private readonly IEmployeeBusinessLogic _employeeBusinessLogic;
+        readonly UserManager<IdentityUser> _userManager;
 
-        public SearchController(IDepartamentRepository depRepository, IDepartamentBusinessLogic depBusinessLogic, ICompanyBusinessLogic companyBusinessLogic, IEmployeeBusinessLogic employeeBusinessLogic)
+        public SearchController(IDepartamentRepository depRepository, IDepartamentBusinessLogic depBusinessLogic, ICompanyBusinessLogic companyBusinessLogic, IEmployeeBusinessLogic employeeBusinessLogic, UserManager<IdentityUser> userManager)
         {
             _depBusinessLogic = depBusinessLogic;
             _companyBusinessLogic = companyBusinessLogic;
             _employeeBusinessLogic = employeeBusinessLogic;
+            _userManager = userManager;
         }
 
         public IActionResult Index()
@@ -90,6 +93,16 @@ namespace DocsExchange.Controllers
                 array.Add(item.Name);
             }
 
+            return array.ToArray();
+        }
+        public async Task<string[]> AutocompleteSearchUsers(string term)
+        {
+            if (term == null) return null;
+            IdentityUser user = await _userManager.FindByEmailAsync(term);
+            List<string> array = new List<string>();
+            if(user.UserName != null)
+                array.Add(user.UserName);
+            
             return array.ToArray();
         }
     }

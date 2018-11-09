@@ -46,7 +46,7 @@
                 <tbody>
                     <tr>
                         <td>@Html.EditorFor(x => x.Name, new { htmlAttributes = new { @id = "AutoCcEmployee", @class = "EditorRadius" } })</td>
-                        <td>@Html.EditorFor(x => x.OkpoCode, new { htmlAttributes = new { @class = "EditorRadius" } })</td>
+                        <td>@Html.EditorFor(x => x.Okpo, new { htmlAttributes = new { @class = "EditorRadius" } })</td>
                         <td>@Html.EditorFor(x => x.Departament, new { htmlAttributes = new { @id = "AutoCcDep", @class = "EditorRadius" } })</td>
                     </tr>
                 </tbody>
@@ -80,7 +80,7 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td class="col-lg-1">
-                @Html.DisplayFor(modelItem => item.OkpoCode)
+                @Html.DisplayFor(modelItem => item.Okpo)
             </td>
             <td  class="col-lg-1">
                 @Html.DisplayFor(modelItem => item.DepartamentName)

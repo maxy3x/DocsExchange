@@ -14,7 +14,7 @@ namespace DocsExchange.ViewModels
         [DisplayName("Повідомлення")]
         public String Message { get; set; }
         [Required]
-        [DisplayName("Ім'я")]
+        [DisplayName("Повне ім'я")]
         public String Name { get; set; }
         [Required]
         [DisplayName("Ім'я")]
@@ -25,7 +25,7 @@ namespace DocsExchange.ViewModels
         [DisplayName("По-батькові")]
         public string Patronymic { get; set; }
         [DisplayName("ОКПО")]
-        public int OkpoCode { get; set; }
+        public long Okpo { get; set; }
         [Required]
         [DisplayName("Відділ")]
         public string DepartamentName { get; set; }

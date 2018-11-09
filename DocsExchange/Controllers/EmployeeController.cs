@@ -121,7 +121,7 @@ namespace DocsExchange.Controllers
         public ActionResult Filter(FilterEployees filtersEvents)
         {
             var emplFilter = filtersEvents.Name;
-            var okpoFilter = filtersEvents.OkpoCode;
+            var okpoFilter = filtersEvents.Okpo;
             var departamentFilter = filtersEvents.Departament;
             var employees = _employeeBusinessLogic
                 .GetAll()
@@ -162,13 +162,13 @@ namespace DocsExchange.Controllers
                 return true;
             return false;
         }
-        private bool FilterByOKPO(Employee @event, int number)
+        private bool FilterByOKPO(Employee @event, long number)
         {
             if (number == 0)
                 return true;
-            if (@event.OkpoCode == 0)
-                return true;
-            if (@event.OkpoCode == number)
+            if (@event.Okpo == 0)
+                return false;
+            if (@event.Okpo == number)
                 return true;
             return false;
         }
