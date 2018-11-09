@@ -13,6 +13,7 @@ namespace Domain.Models
         [Required]
         public String SecondName { get; set; }
         public int OkpoCode { get; set; }
+        public long Okpo { get; set; }
         public string Patronymic { get; set; }
         [Required]
         public int Departament { get; set; }
