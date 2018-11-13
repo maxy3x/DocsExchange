@@ -1,14 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using DataAccess.Context;
 using System.Linq;
+using System.Threading.Tasks;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess
 {
+    
     public class DbInitializer
     {
-        public static async void Initialize(DocsDbContext context)
+        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public DbInitializer(RoleManager<IdentityRole> roleManager, UserManager<IdentityUser> userManager)
+        {
+            _roleManager = roleManager;
+            _userManager = userManager;
+        }
+
+        public static void Initialize(DocsDbContext context)
         {
             context.Database.EnsureCreated();
             if (!context.Departament.Any())
@@ -73,6 +86,20 @@ namespace DataAccess
                     context.Company.Add(item);
                 }
                 context.SaveChanges();
+            }
+
+            if (context.Users.Count(x => x.Email == "maxy3x@gmail.com") != 0)
+            {
+                return;
+            }
+            else
+            {
+                //var user = new IdentityUser()
+                //{
+                //    UserName = "maxy3d@gmail.com",
+                //    Email = "maxy3d@gmail.com"
+                //};
+                //context.Users.Add(user);
             }
         }
     }
