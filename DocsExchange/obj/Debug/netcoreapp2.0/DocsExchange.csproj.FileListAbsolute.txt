@@ -78,7 +78,6 @@ D:\INTITA\DocsExchange\DocsExchange\bin\Debug\netcoreapp2.0\System.Drawing.Desig
 D:\INTITA\DocsExchange\DocsExchange\bin\Debug\netcoreapp2.0\System.Web.RegularExpressions.xml
 D:\INTITA\DocsExchange\DocsExchange\bin\Debug\netcoreapp2.0\System.Runtime.Serialization.Formatters.Soap.xml
 D:\INTITA\DocsExchange\DocsExchange\bin\Debug\netcoreapp2.0\System.Deployment.xml
-D:\INTITA\DocsExchange\DocsExchange\bin\Debug\netcoreapp2.0\System.EnterpriseServices.Wrapper.dll
 D:\INTITA\DocsExchange\DocsExchange\obj\Debug\netcoreapp2.0\DocsExchange.csprojResolveAssemblyReference.cache
 D:\INTITA\DocsExchange\DocsExchange\obj\Debug\netcoreapp2.0\DocsExchange.csproj.CoreCompileInputs.cache
 D:\INTITA\DocsExchange\DocsExchange\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
@@ -129,3 +128,4 @@ D:\INTITA\GitHub\DocsExchange\DocsExchange\obj\Debug\netcoreapp2.0\DocsExchange.
 D:\INTITA\GitHub\DocsExchange\DocsExchange\obj\Debug\netcoreapp2.0\DocsExchange.AssemblyInfo.cs
 D:\INTITA\GitHub\DocsExchange\DocsExchange\obj\Debug\netcoreapp2.0\DocsExchange.dll
 D:\INTITA\GitHub\DocsExchange\DocsExchange\obj\Debug\netcoreapp2.0\DocsExchange.pdb
+D:\INTITA\DocsExchange\DocsExchange\bin\Debug\netcoreapp2.0\System.EnterpriseServices.Wrapper.dll

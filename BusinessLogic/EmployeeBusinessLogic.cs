@@ -35,7 +35,7 @@ namespace BusinessLogic
 
         public IEnumerable<Employee> GetAll()
         {
-            return _repository.GetAll();
+            return _repository.GetAllActive();
         }
 
         public List<Employee> GetByStr(string searchStr)

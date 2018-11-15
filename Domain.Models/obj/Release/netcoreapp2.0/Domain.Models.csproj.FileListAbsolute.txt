@@ -1,0 +1,11 @@
+D:\INTITA\DocsExchange\Domain.Models\bin\Release\netcoreapp2.0\Domain.Models.deps.json
+D:\INTITA\DocsExchange\Domain.Models\bin\Release\netcoreapp2.0\Domain.Models.dll
+D:\INTITA\DocsExchange\Domain.Models\bin\Release\netcoreapp2.0\Domain.Models.pdb
+D:\INTITA\DocsExchange\Domain.Models\bin\Release\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.dll
+D:\INTITA\DocsExchange\Domain.Models\bin\Release\netcoreapp2.0\Microsoft.Extensions.Identity.Stores.xml
+D:\INTITA\DocsExchange\Domain.Models\obj\Release\netcoreapp2.0\Domain.Models.csprojResolveAssemblyReference.cache
+D:\INTITA\DocsExchange\Domain.Models\obj\Release\netcoreapp2.0\Domain.Models.csproj.CoreCompileInputs.cache
+D:\INTITA\DocsExchange\Domain.Models\obj\Release\netcoreapp2.0\Domain.Models.AssemblyInfoInputs.cache
+D:\INTITA\DocsExchange\Domain.Models\obj\Release\netcoreapp2.0\Domain.Models.AssemblyInfo.cs
+D:\INTITA\DocsExchange\Domain.Models\obj\Release\netcoreapp2.0\Domain.Models.dll
+D:\INTITA\DocsExchange\Domain.Models\obj\Release\netcoreapp2.0\Domain.Models.pdb

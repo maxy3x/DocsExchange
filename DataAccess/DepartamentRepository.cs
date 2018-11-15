@@ -47,7 +47,7 @@ namespace DataAccess
 
         public IEnumerable<Departament> GetAll()
         {
-            return _context.Departament.ToList();
+            return _context.Departament.Where(x=>x.IsDeleted==false).ToList();
         }
 
         public List<Departament> GetByStr(string searchStr)

@@ -11,6 +11,7 @@ namespace DataAccess
         void Delete(int id);
         List<Employee> GetByStr(string searchStr);
         IEnumerable<Employee> GetAll();
+        IEnumerable<Employee> GetAllActive();
         IEnumerable<Employee> GetByDepartament(Departament departament);
     }
 }

@@ -1,0 +1,13 @@
+D:\INTITA\DocsExchange\DataAccess\bin\Release\netcoreapp2.0\DataAccess.deps.json
+D:\INTITA\DocsExchange\DataAccess\bin\Release\netcoreapp2.0\DataAccess.runtimeconfig.json
+D:\INTITA\DocsExchange\DataAccess\bin\Release\netcoreapp2.0\DataAccess.runtimeconfig.dev.json
+D:\INTITA\DocsExchange\DataAccess\bin\Release\netcoreapp2.0\DataAccess.dll
+D:\INTITA\DocsExchange\DataAccess\bin\Release\netcoreapp2.0\DataAccess.pdb
+D:\INTITA\DocsExchange\DataAccess\bin\Release\netcoreapp2.0\Domain.Models.dll
+D:\INTITA\DocsExchange\DataAccess\bin\Release\netcoreapp2.0\Domain.Models.pdb
+D:\INTITA\DocsExchange\DataAccess\obj\Release\netcoreapp2.0\DataAccess.csprojResolveAssemblyReference.cache
+D:\INTITA\DocsExchange\DataAccess\obj\Release\netcoreapp2.0\DataAccess.csproj.CoreCompileInputs.cache
+D:\INTITA\DocsExchange\DataAccess\obj\Release\netcoreapp2.0\DataAccess.AssemblyInfoInputs.cache
+D:\INTITA\DocsExchange\DataAccess\obj\Release\netcoreapp2.0\DataAccess.AssemblyInfo.cs
+D:\INTITA\DocsExchange\DataAccess\obj\Release\netcoreapp2.0\DataAccess.dll
+D:\INTITA\DocsExchange\DataAccess\obj\Release\netcoreapp2.0\DataAccess.pdb

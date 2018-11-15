@@ -1,0 +1,13 @@
+D:\INTITA\DocsExchange\BusinessLogic\bin\Release\netcoreapp2.0\BusinessLogic.deps.json
+D:\INTITA\DocsExchange\BusinessLogic\bin\Release\netcoreapp2.0\BusinessLogic.dll
+D:\INTITA\DocsExchange\BusinessLogic\bin\Release\netcoreapp2.0\BusinessLogic.pdb
+D:\INTITA\DocsExchange\BusinessLogic\bin\Release\netcoreapp2.0\DataAccess.dll
+D:\INTITA\DocsExchange\BusinessLogic\bin\Release\netcoreapp2.0\Domain.Models.dll
+D:\INTITA\DocsExchange\BusinessLogic\bin\Release\netcoreapp2.0\DataAccess.pdb
+D:\INTITA\DocsExchange\BusinessLogic\bin\Release\netcoreapp2.0\Domain.Models.pdb
+D:\INTITA\DocsExchange\BusinessLogic\obj\Release\netcoreapp2.0\BusinessLogic.csprojResolveAssemblyReference.cache
+D:\INTITA\DocsExchange\BusinessLogic\obj\Release\netcoreapp2.0\BusinessLogic.csproj.CoreCompileInputs.cache
+D:\INTITA\DocsExchange\BusinessLogic\obj\Release\netcoreapp2.0\BusinessLogic.AssemblyInfoInputs.cache
+D:\INTITA\DocsExchange\BusinessLogic\obj\Release\netcoreapp2.0\BusinessLogic.AssemblyInfo.cs
+D:\INTITA\DocsExchange\BusinessLogic\obj\Release\netcoreapp2.0\BusinessLogic.dll
+D:\INTITA\DocsExchange\BusinessLogic\obj\Release\netcoreapp2.0\BusinessLogic.pdb
